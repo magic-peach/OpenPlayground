@@ -124,12 +124,12 @@ projects/your-project-name/
    [
    {
       "title": "Your Project Name",
-  "category": "utility",
-  "description": "Brief description of your project.",
-  "tech": ["HTML", "CSS", "JS"],
-  "link": "./projects/your-project-name/index.html",
-  "icon": "ri-your-icon-name",
-  "coverClass": "your-project-cover"
+      "category": "utility",
+      "description": "Brief description of your project.",
+      "tech": ["HTML", "CSS", "JS"],
+      "link": "./projects/your-project-name/index.html",
+      "icon": "ri-your-icon-name",
+      "coverClass": "your-project-cover"
    }
    ]  
    ```
@@ -141,10 +141,10 @@ projects/your-project-name/
    - If you used a `coverClass` (e.g., `your-project-cover`) in step 2, add the styling in `css/style.css` :
 
    ```copy
-   .your-project-cover {
-    background: linear-gradient(135deg, #color1 0%, #color2 100%);
-    color: white; /* Optional: adjust text color if needed */
-   }
+         .your-project-cover {
+         background: linear-gradient(135deg, #color1 0%, #color2 100%);
+         color: white; /* Optional: adjust text color if needed */
+         }
    ```
    - Alternatively, you can use `"coverStyle"` in `projects.json` for inline styles instead of a class.
    
