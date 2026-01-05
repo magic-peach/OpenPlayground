@@ -883,6 +883,160 @@
         color: var(--primary-color);
         font-size: 1.5rem;
     }
+
+    /* Floating Chatbot Button */
+.chatbot-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 26px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+/* Chatbot Container */
+.chatbot-container {
+  position: fixed;
+  bottom: 90px;
+  right: 25px;
+  width: 320px;
+  background: #0b1220;
+  border-radius: 14px;
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  z-index: 1000;
+}
+
+/* Header */
+.chatbot-header {
+  background: #111827;
+  padding: 12px;
+  color: #60a5fa;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Messages */
+.chatbot-messages {
+  padding: 12px;
+  height: 280px;
+  overflow-y: auto;
+}
+
+.bot-msg, .user-msg {
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  max-width: 85%;
+  font-size: 14px;
+}
+
+.bot-msg {
+  background: #1f2933;
+  color: #e5e7eb;
+}
+
+.user-msg {
+  background: #3b82f6;
+  color: white;
+  margin-left: auto;
+  text-align: right;
+}
+
+/* Input */
+.chatbot-input {
+  display: flex;
+  padding: 10px;
+  background: #111827;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 8px;
+  background: #1f2933;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 6px;
+}
+
+.chatbot-input button {
+  margin-left: 6px;
+  padding: 8px 12px;
+  background: #3b82f6;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Light Theme Support */
+body.light .chatbot-container {
+  background: #ffffff;
+}
+
+body.light .chatbot-header {
+  background: #f1f5f9;
+  color: #2563eb;
+}
+
+body.light .bot-msg {
+  background: #e5e7eb;
+  color: #111;
+    /* Dropdown text color */
+.sort-box select {
+    color: var(--text-primary);   /* text color */
+    background: transparent;
+}
+
+/* Dropdown option text color */
+.sort-box select option {
+    color: #111827;               /* light mode option text */
+    background: #ffffff;
+}
+
+/* Dark mode dropdown options */
+[data-theme="dark"] .sort-box select option {
+    color: #f1f5f9;
+    background: #1e293b;
+}
+.contributor-badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.contributor-badge.maintainer {
+    background: #f59e0b;
+    color: #111827;
+}
+
+.contributor-badge.developer {
+    background: #3b82f6;
+    color: white;
+}
+
+.contributor-badge.contributor {
+    background: #10b981;
+    color: white;
+}
+
 </style>
 </head>
 
@@ -1086,6 +1240,34 @@
 
         <!-- Projects Grid -->
         <div class="projects-container">
+            <!-- Random Idea Generator -->
+<a href="./projects/random-idea-generator/index.html" 
+   class="card" 
+   data-category="utility">
+
+    <div class="card-cover" 
+         style="background:linear-gradient(135deg,#667eea,#764ba2); color:white">
+        <i class="ri-lightbulb-flash-line"></i>
+    </div>
+
+    <div class="card-content">
+        <div class="card-header-flex">
+            <h3 class="card-heading">Random Idea Generator</h3>
+            <span class="category-tag">Utility</span>
+        </div>
+
+        <p class="card-description">
+            Generate creative ideas instantly with smooth animations and a clean UI.
+        </p>
+
+        <div class="card-tech">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+    </div>
+</a>
+
             <!-- Habit Tracker -->
             <a href="./projects/habit-tracker/index.html" class="card" data-category="utility">
                 <div class="card-cover" style="background:#22c55e; color:white">
@@ -1139,6 +1321,37 @@
                         <span class="category-tag">Utility</span>
                     </div>
                     <p class="card-description">Drag-and-drop task board with local storage.</p>
+                    <div class="card-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                </div>
+            </a>
+            <!-- Kanban Board -->
+            <a href="./projects/focussesh/index.html" class="card" data-category="utility">
+                <div class="card-cover" style="background:#667eea; color:white"><i class="ri-kanban-view"></i></div>
+                <div class="card-content">
+                    <div class="card-header-flex">
+                        <h3 class="card-heading">FocusSesh</h3>
+                        <span class="category-tag">Utility</span>
+                    </div>
+                    <p class="card-description">FocusSesh is a lightweight productivity web application built using pure HTML, CSS, and JavaScript that 
+                        helps users stay focused by simulating website blocking during dedicated work sessions. 
+                        Users can list distracting websites, start a focus timer, and enter a distraction-free mode with a
+                        motivational interface that encourages deep work. By combining a Pomodoro-style timer with a visual focus lock,
+                         FocusSesh helps improve concentration, reduce procrastination, and build better focus habits.
+
+                    </p>
+                    <div class="card-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                </div>
+            </a>
+            <!-- Kanban Board -->
+            <a href="./projects/bubblecapture/index.html" class="card" data-category="utility">
+                <div class="card-cover" style="background:#667eea; color:white"><i class="ri-kanban-view"></i></div>
+                <div class="card-content">
+                    <div class="card-header-flex">
+                        <h3 class="card-heading">BubbleCapture</h3>
+                        <span class="category-tag">Utility</span>
+                    </div>
+                    <p class="card-description">This project visualizes DOM event propagation by dynamically 
+                        switching between event bubbling and capturing phases and logging the event flow in real time.</p>
                     <div class="card-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
                 </div>
             </a>
@@ -1288,6 +1501,19 @@
                 </div>
             </a>
 
+            <!-- Online Image Editor -->
+            <a href="./projects/Online-image-editor/index.html" class="card" data-category="utility">
+                <div class="card-cover" style="background:#34d399; color:white"><i class="ri-image-edit-line"></i></div>
+                <div class="card-content">
+                    <div class="card-header-flex">
+                        <h3 class="card-heading">Online Image Editor</h3>
+                        <span class="category-tag">Utility</span>
+                    </div>
+                    <p class="card-description">Edit images in-browser with cropping, filters, and basic drawing tools.</p>
+                    <div class="card-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                </div>
+            </a>
+
             <!-- Memory Game -->
             <a href="./projects/memory-game/index.html" class="card" data-category="puzzle">
                 <div class="card-cover" style="background:#ec4899; color:white"><i class="ri-mind-map"></i></div>
@@ -1425,6 +1651,27 @@
                 </div>
             </a>
 
+            <!-- Git commit ai  -->
+            <a href="./projects/GitCommit/index.html" class="card" data-category="utility">
+                <div class="card-cover" style="background:#afdfff;display:flex;align-items:center;justify-content:center">
+                    <i class="ri-checkbox-line"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-header-flex">
+                        <h3 class="card-heading">AI Git Commit Message Generator</h3>
+                        <span class="category-tag">Utility</span>
+                    </div>
+                    <p class="card-description">
+                       AI-powered suggestions based on your code changes
+                    </p>
+                    <div class="card-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </a>
+
             <!-- todo list -->
             <a href="./projects/todo-list/index.html" class="card" data-category="utility">
                 <div class="card-cover" style="background:#e0f2fe;display:flex;align-items:center;justify-content:center">
@@ -1525,8 +1772,8 @@
                         <span class="category-tag">Utility</span>
                     </div>
                     <p class="card-description">
-                        Calculates Body Mass Index using height and weight inputs,
-                        helping users understand basic health metrics instantly.
+                        Calculate your BMI with metric/imperial units, track your progress
+                        with list/chart views, and get instant health category insights.
                     </p>
                     <div class="card-tech">
                         <span>HTML</span>
@@ -1571,6 +1818,19 @@
                 </div>
             </a>
 
+                        <!-- Productivity Dashboard -->
+            <a href="./projects/MergeDoc/index.html" class="card" data-category="utility">
+                <div class="card-cover" style="background:#7a1050; color:white"><i class="ri-aed-line"></i></div>
+                <div class="card-content">
+                    <div class="card-header-flex">
+                        <h3 class="card-heading">PDF Merger</h3>
+                        <span class="category-tag">Utility</span>
+                    </div>
+                    <p class="card-description">Merge multiple PDF files into one document directly in your browser.</p>
+                    <div class="card-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                </div>
+            </a>
+
             <!-- Quote Generator -->
             <a href="./projects/quote-generator/index.html" class="card" data-category="utility">
                 <div class="card-cover" style="background:#a855f7; color:white"><i class="ri-double-quotes-l"></i></div>
@@ -1596,6 +1856,21 @@
                     <div class="card-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
                 </div>
             </a>
+            
+
+            <!-- Snake And Ladder -->
+            <a href="./snake-and-ladder/index.html" class="card" data-category="game">
+                <div class="card-cover" style="background:#f97316; color:white"><i class="ri-keyboard-line"></i></div>
+                <div class="card-content">
+                    <div class="card-header-flex">
+                        <h3 class="card-heading">SNAKE AND LADDER</h3>
+                        <span class="category-tag">Game</span>
+                    </div>
+                    <p class="card-description">Play The SNake And ladder</p>
+                    <div class="card-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                </div>
+            </a>
+            
 
             <!-- Currency Converter -->
             <a href="./projects/currency-converter/index.html" class="card" data-category="utility">
@@ -1802,6 +2077,43 @@
                 </div>
             </a>
 
+                 <!-- Browser-Based -Code-Editor-and- Compiler-UI Project -->
+            <a href="./projects/Browser-Based -Code-Editor-and- Compiler-UI/index.html" class="card" data-category="game">
+                <div class="card-cover" style="background:#8b5cf6; color:white"><i class="ri-keyboard-line"></i></div>
+                <div class="card-content">
+                    <div class="card-header-flex">
+                        <h3 class="card-heading">Browser-Based -Code-Editor-and- Compiler-UI</h3>
+                        <span class="category-tag">Compiler</span>
+                    </div>
+                    <p class="card-description">
+                        Advanced browser-based code editor with multi-language support, theme switching, console I/O, and local storage.
+                    </p>
+                    <div class="card-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </a>
+             
+
+             <!-- Real-Time Markdown Editor -->
+            <a href="./projects/Real-Time-Markdown-Editor/index.html" class="card" data-category="tool">
+                 <div class="card-cover" style="background:#ecfeff; color:#0891b2">
+             <i class="ri-markdown-line"></i>
+          </div>
+           <div class="card-content">
+        <div class="card-header-flex">
+                   <h3 class="card-heading">Real-Time Markdown Editor</h3>
+                  <span class="category-tag">Tool</span>
+        </div>
+        <p class="card-description">Write Markdown and see live preview instantly.</p>
+        <div class="card-tech">
+            <span>HTML</span><span>CSS</span><span>JS</span>
+        </div>
+    </div>
+          </a>
+
             <!-- Drum-Kit-Activity -->
             <a href="./projects/Drum-Kit-Activity/index.html" class="card" data-category="game">
                 <div class="card-cover" style="background:#fdf2f8; color:#db2777"><i class="ri-drum-line"></i></div>
@@ -1855,6 +2167,24 @@
 </a>
 
 
+                        <!-- Reflex Game -->
+            <a href="./projects/reflex-game/index.html" class="card" data-category="game">
+                <div class="card-cover reflex-cover" ><i class="ri-cursor-line"></i></div>
+                <div class="card-content">
+                    <div class="card-header-flex">
+                        <h3 class="card-heading">Reflex Game</h3>
+                        <span class="category-tag">Game</span>
+                    </div>
+                    <p class="card-description">
+                        Test your reflexes by clicking on buttons as they move away from cursor!
+                    </p>
+                    <div class="card-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </a>
         </div>
 
         <!-- Pagination Controls -->
@@ -1930,13 +2260,72 @@
         </div>
     </section>
 
-<!-- Contributors Section -->
-<section id="contributors" class="contributors-section">
-    <div class="section-header">
-        <span class="section-badge">Community</span>
-        <h2 class="section-title">Hall of <span class="gradient-text">Contributors</span></h2>
-        <p class="section-subtitle">Thanks to everyone who has contributed to this project!</p>
+
+        <!--Text-Formatter-Cleaner -->
+    <a href="projects/text-formatter-cleaner/index.html" class="card" data-category="tools">
+    <div class="card-cover">
+        <i class="ri-file-text-line"></i>
     </div>
+    <div class="card-content">
+        <div class="card-header-flex">
+            <h3 class="card-heading">Text Formatter & Cleaner</h3>
+            <span class="category-tag">Tools</span>
+        </div>
+        <p class="card-description">
+            Format text into different cases, clean extra spaces,
+            and analyze word and character count easily.
+        </p>
+        <div class="card-tech">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+        </div>
+    </div>
+</a>
+
+    <!-- Contributors Section -->
+    <section id="contributors" class="contributors-section">
+        <div class="section-header">
+            <span class="section-badge">Community</span>
+            <h2 class="section-title">Hall of <span class="gradient-text">Contributors</span></h2>
+            <p class="section-subtitle">Thanks to everyone who has contributed to this project!</p>
+        </div>
+
+    <!-- Contributor Controls -->
+<div class="controls-wrapper" style="margin-bottom:2rem; display:flex; gap:1rem; flex-wrap:wrap; justify-content:center">
+
+    <!-- Search -->
+    <div class="search-box">
+        <i class="ri-search-line"></i>
+        <input type="text" id="contributor-search" placeholder="Search contributors...">
+    </div>
+
+    <!-- Role Filter -->
+    <div class="sort-box">
+        <select id="role-filter">
+            <option value="all">All Roles</option>
+            <option value="maintainer">Maintainer</option>
+            <option value="developer">Developer</option>
+            <option value="contributor">Contributor</option>
+        </select>
+    </div>
+
+    <!-- Sort -->
+    <div class="sort-box">
+        <select id="contributor-sort">
+            <option value="default">Sort</option>
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+            <option value="newest">Newest</option>
+        </select>
+    </div>
+
+    <!-- Reset -->
+    <button id="reset-contributor-filters" class="view-all-btn">
+        Reset Filters
+    </button>
+</div>
+
 
     <div class="contributors-grid" id="contributors-grid">
         <!-- Loading skeletons will be shown here initially -->
@@ -1969,6 +2358,26 @@
         <i class="ri-arrow-up-line"></i>
     </button>
 
+<footer class="footer">
+    <div class="footer-container">
+        <p>© 2026 OpenPlayground. Built by the community.</p>
+        <div class="footer-links">
+            <a href="#projects">Projects</a>
+            <a href="#contribute">Contribute</a>
+            <a href="https://github.com/YadavAkhileshh/OpenPlayground" target="_blank">GitHub</a>
+                    <a href="sitemap.html">Sitemap</a>
+
+
+        <!-- Footer Grid -->
+        <div class="footer-content">
+            <!-- Branding Section -->
+            <div class="footer-section footer-branding">
+                <h4 class="footer-logo">OpenPlayground</h4>
+                <p class="footer-description">
+                    A community-driven platform where developers showcase their creativity through interactive web projects. Build, share, and explore amazing projects.
+                </p>
+                <p class="footer-copyright">© 2026 OpenPlayground. Built by the community.</p>
+            </div>
     <footer class="footer">
         <div class="footer-container">
             <!-- Footer Grid -->
@@ -2108,6 +2517,42 @@
         `;
     }
 
+
+function getRole(contributor) {
+    if (contributor.permissions?.admin) return "maintainer";
+    if (contributor.contributions >= 20) return "developer";
+    return "contributor";
+}
+
+function createContributorCard(contributor) {
+    const role = getRole(contributor);
+
+    return `
+        <div class="contributor-card"
+             data-role="${role}"
+             data-name="${contributor.login.toLowerCase()}"
+             data-date="${contributor.id}">
+             
+            <img src="${contributor.avatar_url}" class="contributor-avatar" loading="lazy">
+
+            <h4 class="contributor-name">${contributor.login}</h4>
+            <span class="contributor-badge ${role}">
+    ${role.toUpperCase()}
+</span>
+
+
+            <div class="contributor-contributions">
+                <i class="ri-git-commit-line"></i>
+                ${contributor.contributions}
+            </div>
+
+            <a href="${contributor.html_url}" target="_blank" class="contributor-link">
+                <i class="ri-github-fill"></i> Profile
+            </a>
+        </div>
+    `;
+}
+
     // Display contributors in the grid
     function displayContributors(contributors) {
         // Remove loading skeletons
@@ -2187,7 +2632,65 @@
 
     // Initialize contributors when the page loads
     window.addEventListener('load', initContributors);
+    const searchInput = document.getElementById("contributor-search");
+const roleFilter = document.getElementById("role-filter");
+const sortSelect = document.getElementById("contributor-sort");
+const resetBtn = document.getElementById("reset-contributor-filters");
+
+function applyContributorFilters() {
+    const search = searchInput.value.toLowerCase();
+    const role = roleFilter.value;
+    const sort = sortSelect.value;
+
+    let cards = Array.from(document.querySelectorAll(".contributor-card"));
+
+    // SEARCH + ROLE FILTER
+    cards.forEach(card => {
+        const name = card.dataset.name;
+        const cardRole = card.dataset.role;
+
+        const matchesSearch = name.includes(search);
+        const matchesRole = role === "all" || role === cardRole;
+
+        card.style.display = (matchesSearch && matchesRole) ? "flex" : "none";
+    });
+
+    // SORT
+    let visibleCards = cards.filter(c => c.style.display !== "none");
+
+    if (sort === "az") {
+        visibleCards.sort((a, b) =>
+            a.dataset.name.localeCompare(b.dataset.name)
+        );
+    } else if (sort === "za") {
+        visibleCards.sort((a, b) =>
+            b.dataset.name.localeCompare(a.dataset.name)
+        );
+    } else if (sort === "newest") {
+        visibleCards.sort((a, b) =>
+            b.dataset.date - a.dataset.date
+        );
+    }
+
+    visibleCards.forEach(card => contributorsGrid.appendChild(card));
+}
+
+// EVENTS
+searchInput.addEventListener("input", applyContributorFilters);
+roleFilter.addEventListener("change", applyContributorFilters);
+sortSelect.addEventListener("change", applyContributorFilters);
+
+// RESET
+resetBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    roleFilter.value = "all";
+    sortSelect.value = "default";
+    applyContributorFilters();
+});
+
 </script> 
+
+
 
 <script>
     // Force scroll to top when page loads
@@ -2539,7 +3042,123 @@
     document.documentElement.style.transition = 'background-color 0.3s ease, color 0.3s ease';
 </script>
 
+
+    <!-- Floating Chatbot -->
+<div class="chatbot-btn" onclick="toggleChatbot()">🤖</div>
+
+<div class="chatbot-container" id="chatbot">
+  <div class="chatbot-header">
+    OpenPlayground AI
+    <span onclick="toggleChatbot()">✖</span>
+  </div>
+
+  <div class="chatbot-messages" id="chatMessages">
+    <div class="bot-msg">
+      Hi 👋 I’m OpenPlayground AI. How can I help you?
+    </div>
+  </div>
+
+  <div class="chatbot-input">
+    <input type="text" id="chatInput" placeholder="Ask something..." />
+    <button onclick="sendChat()">Send</button>
+  </div>
+</div>
+<script>
+    const chatbot = document.getElementById("chatbot");
+const chatMessages = document.getElementById("chatMessages");
+const chatInput = document.getElementById("chatInput");
+
+function toggleChatbot() {
+  chatbot.style.display =
+    chatbot.style.display === "flex" ? "none" : "flex";
+}
+
+function sendChat() {
+  const msg = chatInput.value.trim();
+  if (!msg) return;
+
+  addChatMessage(msg, "user");
+  chatInput.value = "";
+
+  setTimeout(() => {
+    botReply(msg);
+  }, 600);
+}
+
+function addChatMessage(text, sender) {
+  const div = document.createElement("div");
+  div.className = sender === "user" ? "user-msg" : "bot-msg";
+  div.textContent = text;
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function botReply(input) {
+  input = input.toLowerCase();
+  let reply = "I'm still learning 🤖. Try asking about projects or contribution.";
+
+  if (input.includes("project")) {
+    reply = "OpenPlayground hosts frontend projects like games, tools, and UI components.";
+  } 
+  else if (input.includes("contribute")) {
+    reply = "You can contribute by submitting projects or improving existing ones via GitHub 🚀";
+  }
+  else if (input.includes("github")) {
+    reply = "Visit our GitHub repo to explore and contribute to OpenPlayground.";
+  }
+  else if (input.includes("idea")) {
+    reply = "Try building games, AI tools, productivity apps, or creative UI projects!";
+  }
+  else if (input.includes("hello") || input.includes("hi")) {
+    reply = "Hello 👋 Welcome to OpenPlayground!";
+  }
+
+  typeBot(reply);
+}
+
+function typeBot(text) {
+  const div = document.createElement("div");
+  div.className = "bot-msg";
+  chatMessages.appendChild(div);
+
+  let i = 0;
+  const typing = setInterval(() => {
+    div.textContent += text.charAt(i);
+    i++;
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    if (i === text.length) clearInterval(typing);
+  }, 20);
+}
+
+chatInput.addEventListener("keypress", e => {
+  if (e.key === "Enter") sendChat();
+});
+
+</script>
     <script src="./js/app.js"></script>
+        <!-- Chatbot: OpenPlayground Assistant -->
+        <button id="chatbot-toggle">💬</button>
+
+        <div class="chatbot-container" id="chatbot">
+            <div class="chatbot-header">
+                <span>OpenPlayground Assistant</span>
+                <button id="close-chat">✖</button>
+            </div>
+
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="bot-message">
+                    👋 Hi! I’m the OpenPlayground Assistant.  
+                    <br />How can I help you?
+                </div>
+            </div>
+
+            <div class="chatbot-input">
+                <input type="text" id="user-input" placeholder="Type your message..." />
+                <button id="send-btn">➤</button>
+            </div>
+        </div>
+
+        <script src="./js/chatbot.js"></script>
 </body>
 
 </html>
