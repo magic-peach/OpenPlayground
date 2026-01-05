@@ -16,1028 +16,1051 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
-<style>
-    /* Dark Theme Variables - Improved Color Scheme */
-    :root {
-        /* Light theme (default) - Modern light theme */
-        --bg-primary: #ffffff;
-        --bg-secondary: #f8fafc;
-        --text-primary: #111827;
-        --text-secondary: #6b7280;
-        --border-light: #e5e7eb;
-        --card-bg: #ffffff;
-        --glass-bg: rgba(255, 255, 255, 0.85);
-        --primary-color: #2563eb;
-        --primary-hover: #1d4ed8;
-        --accent-color: #8b5cf6;
-        --success-color: #10b981;
-        --warning-color: #f59e0b;
-        --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        --card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.12);
-        --gradient-primary: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
-        --gradient-secondary: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-    }
-    
-    [data-theme="dark"] {
-        /* Dark theme - Modern dark theme (Deep Blue/Purple Theme) */
-        --bg-primary: #0a0a1a; /* Deep navy blue */
-        --bg-secondary: #111827; /* Dark slate blue */
-        --text-primary: #f1f5f9;
-        --text-secondary: #94a3b8;
-        --border-light: #334155;
-        --card-bg: #1e293b;
-        --glass-bg: rgba(10, 10, 26, 0.85);
-        --primary-color: #60a5fa; /* Brighter blue for dark mode */
-        --primary-hover: #93c5fd;
-        --accent-color: #c084fc; /* Brighter purple for dark mode */
-        --success-color: #34d399;
-        --warning-color: #fbbf24;
-        --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-        --card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.35);
-        --gradient-primary: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
-        --gradient-secondary: linear-gradient(135deg, #111827 0%, #0a0a1a 100%);
-    }
-
-    /* Enhanced Theme Toggle */
-    .theme-toggle-container {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .theme-toggle {
-        background: var(--card-bg);
-        border: 2px solid var(--primary-color);
-        width: 56px;
-        height: 28px;
-        border-radius: 50px;
-        padding: 2px;
-        cursor: pointer;
-        position: relative;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-    }
-
-    .theme-toggle:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
-    }
-
-    [data-theme="dark"] .theme-toggle:hover {
-        box-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
-    }
-
-    .theme-toggle-slider {
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        background: var(--primary-color);
-        position: absolute;
-        left: 3px;
-        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 0.8rem;
-    }
-
-    [data-theme="dark"] .theme-toggle-slider {
-        left: calc(100% - 25px);
-        background: var(--primary-color);
-    }
-
-    .theme-toggle-icon {
-        position: absolute;
-        font-size: 0.9rem;
-        transition: opacity 0.3s ease;
-    }
-
-    .theme-toggle-icon.sun {
-        left: 7px;
-        color: #f59e0b;
-        opacity: 1;
-    }
-
-    .theme-toggle-icon.moon {
-        right: 7px;
-        color: #c084fc;
-        opacity: 0.5;
-    }
-
-    [data-theme="dark"] .theme-toggle-icon.sun {
-        opacity: 0.5;
-    }
-
-    [data-theme="dark"] .theme-toggle-icon.moon {
-        opacity: 1;
-    }
-
-    .theme-label {
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: var(--text-secondary);
-        transition: color 0.3s ease;
-    }
-
-    /* Contributors Section Styling */
-    .contributors-section {
-        padding: 5rem 1.5rem;
-        background: var(--bg-secondary);
-        position: relative;
-        overflow: hidden;
-        scroll-margin-top: 75px;
-    }
-
-    .contributors-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1.5rem;
-        max-width: 1280px;
-        margin: 3rem auto 0;
-    }
-
-    .contributor-card {
-        background: var(--card-bg);
-        border-radius: 16px;
-        padding: 1.5rem;
-        text-align: center;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1px solid var(--border-light);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        box-shadow: var(--card-shadow);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .contributor-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: var(--gradient-primary);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .contributor-card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--card-shadow-hover);
-    }
-
-    .contributor-card:hover::before {
-        opacity: 1;
-    }
-
-    .contributor-avatar {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid transparent;
-        background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
-                    var(--gradient-primary) border-box;
-        transition: transform 0.3s ease;
-    }
-
-    .contributor-card:hover .contributor-avatar {
-        transform: scale(1.05);
-    }
-
-    .contributor-name {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin: 0;
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .contributor-username {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-        margin: 0;
-    }
-
-    .contributor-contributions {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.4rem 0.8rem;
-        background: rgba(37, 99, 235, 0.1);
-        color: var(--primary-color);
-        border-radius: 20px;
-        font-size: 0.9rem;
-        font-weight: 500;
-        border: 1px solid rgba(37, 99, 235, 0.2);
-    }
-
-    [data-theme="dark"] .contributor-contributions {
-        background: rgba(96, 165, 250, 0.15);
-        border-color: rgba(96, 165, 250, 0.3);
-    }
-
-    .contributor-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        background: var(--primary-color);
-        color: white;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        margin-top: 0.5rem;
-        transition: all 0.2s ease;
-        border: 2px solid transparent;
-    }
-
-    .contributor-link:hover {
-        background: var(--primary-hover);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-    }
-
-    [data-theme="dark"] .contributor-link:hover {
-        box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
-    }
-
-    /* Loading skeletons */
-    .loading-skeleton {
-        background: var(--card-bg);
-        border-radius: 16px;
-        padding: 1.5rem;
-        text-align: center;
-        animation: pulse 2s infinite;
-        border: 1px solid var(--border-light);
-        box-shadow: var(--card-shadow);
-    }
-
-    .skeleton-avatar {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background: linear-gradient(90deg, 
-            var(--border-light) 25%, 
-            rgba(255,255,255,0.1) 50%, 
-            var(--border-light) 75%);
-        background-size: 200% 100%;
-        animation: shimmer 2s infinite;
-        margin: 0 auto 1rem;
-    }
-
-    .skeleton-text {
-        height: 20px;
-        background: var(--border-light);
-        border-radius: 4px;
-        margin: 0.5rem 0;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .skeleton-text::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, 
-            transparent, 
-            rgba(255,255,255,0.1), 
-            transparent);
-        animation: shimmer 2s infinite;
-    }
-
-    @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.7; }
-    }
-
-    @keyframes shimmer {
-        0% { transform: translateX(-100%); }
-        100% { transform: translateX(100%); }
-    }
-
-    /* Error State */
-    .contributors-error {
-        text-align: center;
-        padding: 3rem;
-        color: var(--text-secondary);
-        grid-column: 1 / -1;
-        background: var(--card-bg);
-        border-radius: 16px;
-        border: 1px solid var(--border-light);
-        box-shadow: var(--card-shadow);
-    }
-
-    .error-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-    }
-
-    /* Load More Button */
-    .view-all-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin: 2rem auto 0;
-        padding: 0.75rem 1.5rem;
-        background: transparent;
-        border: 2px solid var(--primary-color);
-        color: var(--primary-color);
-        border-radius: 8px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .view-all-btn::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: var(--gradient-primary);
-        transition: left 0.3s ease;
-        z-index: -1;
-    }
-
-    .view-all-btn:hover {
-        color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
-    }
-
-    .view-all-btn:hover::before {
-        left: 0;
-    }
-
-    [data-theme="dark"] .view-all-btn:hover {
-        box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
-    }
-
-    .contributors-show-more {
-        text-align: center;
-        margin-top: 2rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .contributors-grid {
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-        
-        .contributor-card {
-            padding: 1rem;
-        }
-        
-        .contributor-avatar {
-            width: 60px;
-            height: 60px;
+    <style>
+        /* Dark Theme Variables - Improved Color Scheme */
+        :root {
+            /* Light theme (default) - Modern light theme */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --border-light: #e5e7eb;
+            --card-bg: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --accent-color: #8b5cf6;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.12);
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
+            --gradient-secondary: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
         }
 
+        [data-theme="dark"] {
+            /* Dark theme - Modern dark theme (Deep Blue/Purple Theme) */
+            --bg-primary: #0a0a1a;
+            /* Deep navy blue */
+            --bg-secondary: #111827;
+            /* Dark slate blue */
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-light: #334155;
+            --card-bg: #1e293b;
+            --glass-bg: rgba(10, 10, 26, 0.85);
+            --primary-color: #60a5fa;
+            /* Brighter blue for dark mode */
+            --primary-hover: #93c5fd;
+            --accent-color: #c084fc;
+            /* Brighter purple for dark mode */
+            --success-color: #34d399;
+            --warning-color: #fbbf24;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            --card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.35);
+            --gradient-primary: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
+            --gradient-secondary: linear-gradient(135deg, #111827 0%, #0a0a1a 100%);
+        }
+
+        /* Enhanced Theme Toggle */
         .theme-toggle-container {
-            flex-direction: column;
-            gap: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 2px solid var(--primary-color);
+            width: 56px;
+            height: 28px;
+            border-radius: 50px;
+            padding: 2px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+        }
+
+        [data-theme="dark"] .theme-toggle:hover {
+            box-shadow: 0 0 15px rgba(96, 165, 250, 0.4);
+        }
+
+        .theme-toggle-slider {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            position: absolute;
+            left: 3px;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        [data-theme="dark"] .theme-toggle-slider {
+            left: calc(100% - 25px);
+            background: var(--primary-color);
+        }
+
+        .theme-toggle-icon {
+            position: absolute;
+            font-size: 0.9rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .theme-toggle-icon.sun {
+            left: 7px;
+            color: #f59e0b;
+            opacity: 1;
+        }
+
+        .theme-toggle-icon.moon {
+            right: 7px;
+            color: #c084fc;
+            opacity: 0.5;
+        }
+
+        [data-theme="dark"] .theme-toggle-icon.sun {
+            opacity: 0.5;
+        }
+
+        [data-theme="dark"] .theme-toggle-icon.moon {
+            opacity: 1;
         }
 
         .theme-label {
-            font-size: 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
         }
-    }
 
-    /* Pagination Styles */
-    .pagination-container {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        margin: 40px 0;
-        flex-wrap: wrap;
-        align-items: center;
-    }
+        /* Contributors Section Styling */
+        .contributors-section {
+            padding: 5rem 1.5rem;
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+            scroll-margin-top: 75px;
+        }
 
-    .pagination-container button {
-        padding: 8px 14px;
-        border-radius: 8px;
-        border: 2px solid var(--border-light);
-        background: var(--card-bg);
-        color: var(--text-primary);
-        cursor: pointer;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        min-width: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        .contributors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1280px;
+            margin: 3rem auto 0;
+        }
 
-    .pagination-container button:hover:not(.active) {
-        border-color: var(--primary-color);
-        color: var(--primary-color);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
-    }
+        .contributor-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+        }
 
-    [data-theme="dark"] .pagination-container button:hover:not(.active) {
-        box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
-    }
+        .contributor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
-    .pagination-container button.active {
-        background: var(--gradient-primary);
-        color: white;
-        border-color: transparent;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
-    }
+        .contributor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+        }
 
-    [data-theme="dark"] .pagination-container button.active {
-        box-shadow: 0 4px 15px rgba(96, 165, 250, 0.35);
-    }
+        .contributor-card:hover::before {
+            opacity: 1;
+        }
 
-    .card.hidden {
-        display: none !important;
-    }
+        .contributor-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid transparent;
+            background: linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+                var(--gradient-primary) border-box;
+            transition: transform 0.3s ease;
+        }
 
-    .empty-state {
-        text-align: center;
-        padding: 3rem;
-        color: var(--text-secondary);
-        background: var(--card-bg);
-        border-radius: 16px;
-        border: 1px solid var(--border-light);
-        box-shadow: var(--card-shadow);
-        max-width: 500px;
-        margin: 2rem auto;
-    }
+        .contributor-card:hover .contributor-avatar {
+            transform: scale(1.05);
+        }
 
-    .empty-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-    }
+        .contributor-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    /* Navbar Styles */
-    .navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 9999;
-        background: var(--glass-bg);
-        backdrop-filter: blur(10px) saturate(180%);
-        border-bottom: 1px solid var(--border-light);
-        transition: all 0.3s ease;
-    }
+        .contributor-username {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0;
+        }
 
-    .nav-container {
-        max-width: 1280px;
-        margin: auto;
-        padding: 1rem 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: relative;
-    }
+        .contributor-contributions {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
 
-    .nav-links {
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-    }
+        [data-theme="dark"] .contributor-contributions {
+            background: rgba(96, 165, 250, 0.15);
+            border-color: rgba(96, 165, 250, 0.3);
+        }
 
-    .nav-toggle {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 1.8rem;
-        cursor: pointer;
-        color: var(--text-primary);
-        padding: 0.5rem;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-    }
+        .contributor-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
 
-    .nav-toggle:hover {
-        background: rgba(37, 99, 235, 0.1);
-    }
+        .contributor-link:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
 
-    [data-theme="dark"] .nav-toggle:hover {
-        background: rgba(96, 165, 250, 0.15);
-    }
+        [data-theme="dark"] .contributor-link:hover {
+            box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+        }
 
-    /* ✅ FIXED MOBILE NAVBAR */
-    @media (max-width: 768px) {
-        .nav-toggle {
-            display: block !important;
-            z-index: 10000;
+        /* Loading skeletons */
+        .loading-skeleton {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            animation: pulse 2s infinite;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--card-shadow);
+        }
+
+        .skeleton-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(90deg,
+                    var(--border-light) 25%,
+                    rgba(255, 255, 255, 0.1) 50%,
+                    var(--border-light) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+            margin: 0 auto 1rem;
+        }
+
+        .skeleton-text {
+            height: 20px;
+            background: var(--border-light);
+            border-radius: 4px;
+            margin: 0.5rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skeleton-text::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.1),
+                    transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Error State */
+        .contributors-error {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            grid-column: 1 / -1;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--card-shadow);
+        }
+
+        .error-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Load More Button */
+        .view-all-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 2rem auto 0;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-all-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .view-all-btn:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+        }
+
+        .view-all-btn:hover::before {
+            left: 0;
+        }
+
+        [data-theme="dark"] .view-all-btn:hover {
+            box-shadow: 0 4px 15px rgba(96, 165, 250, 0.3);
+        }
+
+        .contributors-show-more {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contributors-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .contributor-card {
+                padding: 1rem;
+            }
+
+            .contributor-avatar {
+                width: 60px;
+                height: 60px;
+            }
+
+            .theme-toggle-container {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .theme-label {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Pagination Styles */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .pagination-container button {
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 2px solid var(--border-light);
+            background: var(--card-bg);
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pagination-container button:hover:not(.active) {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+        }
+
+        [data-theme="dark"] .pagination-container button:hover:not(.active) {
+            box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+        }
+
+        .pagination-container button.active {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+        }
+
+        [data-theme="dark"] .pagination-container button.active {
+            box-shadow: 0 4px 15px rgba(96, 165, 250, 0.35);
+        }
+
+        .card.hidden {
+            display: none !important;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--card-shadow);
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px) saturate(180%);
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
         }
 
         .nav-links {
-            position: fixed !important;
-            top: 75px !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: calc(100vh - 75px) !important;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
 
-            flex-direction: column !important;
-            background: var(--glass-bg) !important;
-            backdrop-filter: blur(20px) saturate(180%) !important;
-            padding: 2rem !important;
-            gap: 1.5rem !important;
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
 
-            display: none !important;
-            transform: none !important;
-            z-index: 9999 !important;
+        .nav-toggle:hover {
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        [data-theme="dark"] .nav-toggle:hover {
+            background: rgba(96, 165, 250, 0.15);
+        }
+
+        /* ✅ FIXED MOBILE NAVBAR */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block !important;
+                z-index: 10000;
+            }
+
+            .nav-links {
+                position: fixed !important;
+                top: 75px !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: calc(100vh - 75px) !important;
+
+                flex-direction: column !important;
+                background: var(--glass-bg) !important;
+                backdrop-filter: blur(20px) saturate(180%) !important;
+                padding: 2rem !important;
+                gap: 1.5rem !important;
+
+                display: none !important;
+                transform: none !important;
+                z-index: 9999 !important;
+                border-top: 1px solid var(--border-light);
+            }
+
+            .nav-links.active {
+                display: flex !important;
+            }
+
+            .theme-toggle-container {
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid var(--border-light);
+            }
+        }
+
+        body {
+            padding-top: 75px;
+            background: var(--gradient-secondary);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: var(--gradient-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        [data-theme="dark"] .hero-section::before {
+            background: radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(192, 132, 252, 0.15) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: 600;
+            background: rgba(37, 99, 235, 0.15);
+            color: var(--primary-color);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        [data-theme="dark"] .hero-badge {
+            background: rgba(96, 165, 250, 0.2);
+            border-color: rgba(96, 165, 250, 0.4);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--card-shadow);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: var(--primary-color);
+        }
+
+        .card-heading {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+        }
+
+        /* Filter buttons */
+        .filter-btn {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border: 2px solid var(--border-light);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+        }
+
+        [data-theme="dark"] .filter-btn.active {
+            box-shadow: 0 4px 15px rgba(96, 165, 250, 0.35);
+        }
+
+        /* Search and sort boxes */
+        .search-box,
+        .sort-box {
+            background: var(--card-bg);
+            border: 2px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus-within,
+        .sort-box:focus-within {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        [data-theme="dark"] .search-box:focus-within,
+        [data-theme="dark"] .sort-box:focus-within {
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+        }
+
+        .search-box input,
+        .sort-box select {
+            background: transparent;
+            color: var(--text-primary);
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        /* Code blocks */
+        .code-block {
+            background: var(--card-bg);
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            border: 2px solid var(--border-light);
+            overflow-x: auto;
+            text-align: left;
+            word-break: break-all;
+            white-space: pre-wrap;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] .code-block {
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-block code {
+            display: block;
+            color: var(--text-primary);
+            line-height: 1.5;
+            max-width: 100%;
+            overflow-wrap: break-word;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
             border-top: 1px solid var(--border-light);
+            position: relative;
         }
 
-        .nav-links.active {
-            display: flex !important;
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-primary);
         }
 
-        .theme-toggle-container {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-light);
+        .social-link {
+            color: var(--text-primary);
+            background: var(--card-bg);
+            border: 2px solid var(--border-light);
+            transition: all 0.3s ease;
         }
-    }
-
-    body {
-        padding-top: 75px;
-        background: var(--gradient-secondary);
-        color: var(--text-primary);
-        transition: all 0.3s ease;
-        min-height: 100vh;
-    }
-
-    /* Hero Section */
-    .hero-section {
-        background: var(--gradient-secondary);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
-        z-index: 1;
-    }
-
-    [data-theme="dark"] .hero-section::before {
-        background: radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.15) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 20%, rgba(192, 132, 252, 0.15) 0%, transparent 50%);
-    }
-
-    .hero-content {
-        position: relative;
-        z-index: 2;
-    }
-
-    .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        border-radius: 999px;
-        font-weight: 600;
-        background: rgba(37, 99, 235, 0.15);
-        color: var(--primary-color);
-        border: 1px solid rgba(37, 99, 235, 0.3);
-        backdrop-filter: blur(10px);
-    }
-
-    [data-theme="dark"] .hero-badge {
-        background: rgba(96, 165, 250, 0.2);
-        border-color: rgba(96, 165, 250, 0.4);
-    }
-
-    /* Cards */
-    .card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-light);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: var(--card-shadow);
-        border-radius: 12px;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .card:hover {
-        transform: translateY(-8px);
-        box-shadow: var(--card-shadow-hover);
-        border-color: var(--primary-color);
-    }
-
-    .card-heading {
-        color: var(--text-primary);
-        font-weight: 700;
-    }
-
-    .card-description {
-        color: var(--text-secondary);
-    }
-
-    /* Filter buttons */
-    .filter-btn {
-        background: var(--card-bg);
-        color: var(--text-primary);
-        border: 2px solid var(--border-light);
-        transition: all 0.3s ease;
-        font-weight: 500;
-    }
-
-    .filter-btn:hover {
-        border-color: var(--primary-color);
-        color: var(--primary-color);
-        transform: translateY(-2px);
-    }
-
-    .filter-btn.active {
-        background: var(--gradient-primary);
-        color: white;
-        border-color: transparent;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
-    }
-
-    [data-theme="dark"] .filter-btn.active {
-        box-shadow: 0 4px 15px rgba(96, 165, 250, 0.35);
-    }
-
-    /* Search and sort boxes */
-    .search-box, .sort-box {
-        background: var(--card-bg);
-        border: 2px solid var(--border-light);
-        transition: all 0.3s ease;
-    }
-
-    .search-box:focus-within, .sort-box:focus-within {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    }
-
-    [data-theme="dark"] .search-box:focus-within, 
-    [data-theme="dark"] .sort-box:focus-within {
-        box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
-    }
-
-    .search-box input, .sort-box select {
-        background: transparent;
-        color: var(--text-primary);
-    }
-
-    .search-box input::placeholder {
-        color: var(--text-secondary);
-    }
-
-    /* Code blocks */
-    .code-block {
-        background: var(--card-bg);
-        color: var(--text-primary);
-        border-radius: 8px;
-        padding: 12px 16px;
-        font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-        font-size: 0.9rem;
-        margin-top: 0.5rem;
-        border: 2px solid var(--border-light);
-        overflow-x: auto;
-        text-align: left;
-        word-break: break-all;
-        white-space: pre-wrap;
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    [data-theme="dark"] .code-block {
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .code-block code {
-        display: block;
-        color: var(--text-primary);
-        line-height: 1.5;
-        max-width: 100%;
-        overflow-wrap: break-word;
-    }
-
-    /* Footer */
-    .footer {
-        background: var(--bg-secondary);
-        border-top: 1px solid var(--border-light);
-        position: relative;
-    }
-
-    .footer::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: var(--gradient-primary);
-    }
-
-    .social-link {
-        color: var(--text-primary);
-        background: var(--card-bg);
-        border: 2px solid var(--border-light);
-        transition: all 0.3s ease;
-    }
-
-    .social-link:hover {
-        background: var(--primary-color);
-        color: white;
-        border-color: var(--primary-color);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-    }
-
-    [data-theme="dark"] .social-link:hover {
-        box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
-    }
-
-    /* Scroll to top button */
-    #scrollToTopBtn {
-        background: var(--gradient-primary);
-        color: white;
-        border: none;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
-        z-index: 1000;
-    }
-
-    #scrollToTopBtn:hover {
-        transform: translateY(-4px) scale(1.1);
-        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
-    }
-
-    [data-theme="dark"] #scrollToTopBtn {
-        box-shadow: 0 4px 15px rgba(96, 165, 250, 0.35);
-    }
-
-    [data-theme="dark"] #scrollToTopBtn:hover {
-        box-shadow: 0 8px 25px rgba(96, 165, 250, 0.45);
-    }
-
-    /* Additional styles for better dark theme */
-    .section-title .gradient-text {
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .step-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-light);
-        box-shadow: var(--card-shadow);
-        transition: all 0.3s ease;
-    }
-
-    .step-card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--card-shadow-hover);
-        border-color: var(--primary-color);
-    }
-
-    .contribute-section {
-        background: var(--bg-secondary);
-        position: relative;
-    }
-
-    .projects-section {
-        background: var(--bg-primary);
-    }
-
-    /* Improve text visibility in dark mode */
-    [data-theme="dark"] .hero-subtitle {
-        color: #cbd5e1;
-    }
-
-    [data-theme="dark"] .section-subtitle {
-        color: #cbd5e1;
-    }
-
-    [data-theme="dark"] .footer-description {
-        color: #cbd5e1;
-    }
-
-    /* Nav link styles */
-    .nav-link {
-        color: var(--text-primary);
-        text-decoration: none;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-    }
-
-    .nav-link:hover {
-        background: rgba(37, 99, 235, 0.1);
-    }
-
-    [data-theme="dark"] .nav-link:hover {
-        background: rgba(96, 165, 250, 0.15);
-    }
-
-    .nav-logo {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        text-decoration: none;
-        color: var(--text-primary);
-        font-weight: 700;
-        font-size: 1.2rem;
-    }
-
-    .nav-logo i {
-        color: var(--primary-color);
-        font-size: 1.5rem;
-    }
-
-    /* Floating Chatbot Button */
-.chatbot-btn {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: #3b82f6;
-  color: #fff;
-  font-size: 26px;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-  z-index: 1000;
-}
-
-/* Chatbot Container */
-.chatbot-container {
-  position: fixed;
-  bottom: 90px;
-  right: 25px;
-  width: 320px;
-  background: #0b1220;
-  border-radius: 14px;
-  overflow: hidden;
-  display: none;
-  flex-direction: column;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  z-index: 1000;
-}
-
-/* Header */
-.chatbot-header {
-  background: #111827;
-  padding: 12px;
-  color: #60a5fa;
-  font-weight: 600;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Messages */
-.chatbot-messages {
-  padding: 12px;
-  height: 280px;
-  overflow-y: auto;
-}
-
-.bot-msg, .user-msg {
-  padding: 8px 12px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  max-width: 85%;
-  font-size: 14px;
-}
-
-.bot-msg {
-  background: #1f2933;
-  color: #e5e7eb;
-}
-
-.user-msg {
-  background: #3b82f6;
-  color: white;
-  margin-left: auto;
-  text-align: right;
-}
-
-/* Input */
-.chatbot-input {
-  display: flex;
-  padding: 10px;
-  background: #111827;
-}
-
-.chatbot-input input {
-  flex: 1;
-  padding: 8px;
-  background: #1f2933;
-  border: none;
-  outline: none;
-  color: white;
-  border-radius: 6px;
-}
-
-.chatbot-input button {
-  margin-left: 6px;
-  padding: 8px 12px;
-  background: #3b82f6;
-  border: none;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-/* Light Theme Support */
-body.light .chatbot-container {
-  background: #ffffff;
-}
-
-body.light .chatbot-header {
-  background: #f1f5f9;
-  color: #2563eb;
-}
-
-body.light .bot-msg {
-  background: #e5e7eb;
-  color: #111;
-    /* Dropdown text color */
-.sort-box select {
-    color: var(--text-primary);   /* text color */
-    background: transparent;
-}
-
-/* Dropdown option text color */
-.sort-box select option {
-    color: #111827;               /* light mode option text */
-    background: #ffffff;
-}
-
-/* Dark mode dropdown options */
-[data-theme="dark"] .sort-box select option {
-    color: #f1f5f9;
-    background: #1e293b;
-}
-.contributor-badge {
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.contributor-badge.maintainer {
-    background: #f59e0b;
-    color: #111827;
-}
-
-.contributor-badge.developer {
-    background: #3b82f6;
-    color: white;
-}
-
-.contributor-badge.contributor {
-    background: #10b981;
-    color: white;
-}
-
-</style>
+
+        .social-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+
+        [data-theme="dark"] .social-link:hover {
+            box-shadow: 0 4px 12px rgba(96, 165, 250, 0.3);
+        }
+
+        /* Scroll to top button */
+        #scrollToTopBtn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
+            z-index: 1000;
+        }
+
+        #scrollToTopBtn:hover {
+            transform: translateY(-4px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+        }
+
+        [data-theme="dark"] #scrollToTopBtn {
+            box-shadow: 0 4px 15px rgba(96, 165, 250, 0.35);
+        }
+
+        [data-theme="dark"] #scrollToTopBtn:hover {
+            box-shadow: 0 8px 25px rgba(96, 165, 250, 0.45);
+        }
+
+        /* Additional styles for better dark theme */
+        .section-title .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: var(--primary-color);
+        }
+
+        .contribute-section {
+            background: var(--bg-secondary);
+            position: relative;
+        }
+
+        .projects-section {
+            background: var(--bg-primary);
+        }
+
+        /* Improve text visibility in dark mode */
+        [data-theme="dark"] .hero-subtitle {
+            color: #cbd5e1;
+        }
+
+        [data-theme="dark"] .section-subtitle {
+            color: #cbd5e1;
+        }
+
+        [data-theme="dark"] .footer-description {
+            color: #cbd5e1;
+        }
+
+        /* Nav link styles */
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        [data-theme="dark"] .nav-link:hover {
+            background: rgba(96, 165, 250, 0.15);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .nav-logo i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        /* Floating Chatbot Button */
+        .chatbot-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #3b82f6;
+            color: #fff;
+            font-size: 26px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        /* Chatbot Container */
+        .chatbot-container {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            width: 320px;
+            background: #0b1220;
+            border-radius: 14px;
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+        }
+
+        /* Header */
+        .chatbot-header {
+            background: #111827;
+            padding: 12px;
+            color: #60a5fa;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Messages */
+        .chatbot-messages {
+            padding: 12px;
+            height: 280px;
+            overflow-y: auto;
+        }
+
+        .bot-msg,
+        .user-msg {
+            padding: 8px 12px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            max-width: 85%;
+            font-size: 14px;
+        }
+
+        .bot-msg {
+            background: #1f2933;
+            color: #e5e7eb;
+        }
+
+        .user-msg {
+            background: #3b82f6;
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        /* Input */
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+            background: #111827;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 8px;
+            background: #1f2933;
+            border: none;
+            outline: none;
+            color: white;
+            border-radius: 6px;
+        }
+
+        .chatbot-input button {
+            margin-left: 6px;
+            padding: 8px 12px;
+            background: #3b82f6;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* Light Theme Support */
+        body.light .chatbot-container {
+            background: #ffffff;
+        }
+
+        body.light .chatbot-header {
+            background: #f1f5f9;
+            color: #2563eb;
+        }
+
+        body.light .bot-msg {
+            background: #e5e7eb;
+            color: #111;
+
+            /* Dropdown text color */
+            .sort-box select {
+                color: var(--text-primary);
+                /* text color */
+                background: transparent;
+            }
+
+            /* Dropdown option text color */
+            .sort-box select option {
+                color: #111827;
+                /* light mode option text */
+                background: #ffffff;
+            }
+
+            /* Dark mode dropdown options */
+            [data-theme="dark"] .sort-box select option {
+                color: #f1f5f9;
+                background: #1e293b;
+            }
+
+            .contributor-badge {
+                padding: 4px 10px;
+                border-radius: 999px;
+                font-size: 0.75rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+            }
+
+            .contributor-badge.maintainer {
+                background: #f59e0b;
+                color: #111827;
+            }
+
+            .contributor-badge.developer {
+                background: #3b82f6;
+                color: white;
+            }
+
+            .contributor-badge.contributor {
+                background: #10b981;
+                color: white;
+            }
+    </style>
 </head>
 
 <body>
@@ -1056,7 +1079,7 @@ body.light .bot-msg {
                 <a href="https://github.com/YadavAkhileshh/OpenPlayground" target="_blank" class="nav-link">
                     <i class="ri-github-fill"></i> GitHub
                 </a>
-                
+
                 <!-- Enhanced Theme Toggle -->
                 <div class="theme-toggle-container">
                     <span class="theme-label">Theme</span>
@@ -1241,32 +1264,29 @@ body.light .bot-msg {
         <!-- Projects Grid -->
         <div class="projects-container">
             <!-- Random Idea Generator -->
-<a href="./projects/random-idea-generator/index.html" 
-   class="card" 
-   data-category="utility">
+            <a href="./projects/random-idea-generator/index.html" class="card" data-category="utility">
 
-    <div class="card-cover" 
-         style="background:linear-gradient(135deg,#667eea,#764ba2); color:white">
-        <i class="ri-lightbulb-flash-line"></i>
-    </div>
+                <div class="card-cover" style="background:linear-gradient(135deg,#667eea,#764ba2); color:white">
+                    <i class="ri-lightbulb-flash-line"></i>
+                </div>
 
-    <div class="card-content">
-        <div class="card-header-flex">
-            <h3 class="card-heading">Random Idea Generator</h3>
-            <span class="category-tag">Utility</span>
-        </div>
+                <div class="card-content">
+                    <div class="card-header-flex">
+                        <h3 class="card-heading">Random Idea Generator</h3>
+                        <span class="category-tag">Utility</span>
+                    </div>
 
-        <p class="card-description">
-            Generate creative ideas instantly with smooth animations and a clean UI.
-        </p>
+                    <p class="card-description">
+                        Generate creative ideas instantly with smooth animations and a clean UI.
+                    </p>
 
-        <div class="card-tech">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-        </div>
-    </div>
-</a>
+                    <div class="card-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </a>
 
             <!-- Habit Tracker -->
             <a href="./projects/habit-tracker/index.html" class="card" data-category="utility">
@@ -1332,11 +1352,14 @@ body.light .bot-msg {
                         <h3 class="card-heading">FocusSesh</h3>
                         <span class="category-tag">Utility</span>
                     </div>
-                    <p class="card-description">FocusSesh is a lightweight productivity web application built using pure HTML, CSS, and JavaScript that 
-                        helps users stay focused by simulating website blocking during dedicated work sessions. 
-                        Users can list distracting websites, start a focus timer, and enter a distraction-free mode with a
-                        motivational interface that encourages deep work. By combining a Pomodoro-style timer with a visual focus lock,
-                         FocusSesh helps improve concentration, reduce procrastination, and build better focus habits.
+                    <p class="card-description">FocusSesh is a lightweight productivity web application built using pure
+                        HTML, CSS, and JavaScript that
+                        helps users stay focused by simulating website blocking during dedicated work sessions.
+                        Users can list distracting websites, start a focus timer, and enter a distraction-free mode with
+                        a
+                        motivational interface that encourages deep work. By combining a Pomodoro-style timer with a
+                        visual focus lock,
+                        FocusSesh helps improve concentration, reduce procrastination, and build better focus habits.
 
                     </p>
                     <div class="card-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
@@ -1350,8 +1373,9 @@ body.light .bot-msg {
                         <h3 class="card-heading">BubbleCapture</h3>
                         <span class="category-tag">Utility</span>
                     </div>
-                    <p class="card-description">This project visualizes DOM event propagation by dynamically 
-                        switching between event bubbling and capturing phases and logging the event flow in real time.</p>
+                    <p class="card-description">This project visualizes DOM event propagation by dynamically
+                        switching between event bubbling and capturing phases and logging the event flow in real time.
+                    </p>
                     <div class="card-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
                 </div>
             </a>
@@ -1509,7 +1533,8 @@ body.light .bot-msg {
                         <h3 class="card-heading">Online Image Editor</h3>
                         <span class="category-tag">Utility</span>
                     </div>
-                    <p class="card-description">Edit images in-browser with cropping, filters, and basic drawing tools.</p>
+                    <p class="card-description">Edit images in-browser with cropping, filters, and basic drawing tools.
+                    </p>
                     <div class="card-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
                 </div>
             </a>
@@ -1543,7 +1568,8 @@ body.light .bot-msg {
 
             <!-- random joke generator -->
             <a href="./projects/random-joke-generator/index.html" class="card" data-category="fun">
-                <div class="card-cover" style="background:#a5b4fc;display:flex;align-items:center;justify-content:center">
+                <div class="card-cover"
+                    style="background:#a5b4fc;display:flex;align-items:center;justify-content:center">
                     <i class="ri-emotion-laugh-line"></i>
                 </div>
                 <div class="card-content">
@@ -1565,7 +1591,8 @@ body.light .bot-msg {
 
             <!-- random dice generator -->
             <a href="./projects/random-dice-generator/index.html" class="card" data-category="fun">
-                <div class="card-cover" style="background:#fde68a;display:flex;align-items:center;justify-content:center">
+                <div class="card-cover"
+                    style="background:#fde68a;display:flex;align-items:center;justify-content:center">
                     <i class="ri-dice-line"></i>
                 </div>
                 <div class="card-content">
@@ -1587,7 +1614,8 @@ body.light .bot-msg {
 
             <!-- chat app -->
             <a href="./projects/chat-app/index.html" class="card" data-category="communication">
-                <div class="card-cover" style="background:#a7f3d0;display:flex;align-items:center;justify-content:center">
+                <div class="card-cover"
+                    style="background:#a7f3d0;display:flex;align-items:center;justify-content:center">
                     <i class="ri-chat-3-line"></i>
                 </div>
                 <div class="card-content">
@@ -1609,7 +1637,8 @@ body.light .bot-msg {
 
             <!-- captcha generator -->
             <a href="./projects/captcha-generator/index.html" class="card" data-category="security">
-                <div class="card-cover" style="background:#c7d2fe;display:flex;align-items:center;justify-content:center">
+                <div class="card-cover"
+                    style="background:#c7d2fe;display:flex;align-items:center;justify-content:center">
                     <i class="ri-shield-keyhole-line"></i>
                 </div>
                 <div class="card-content">
@@ -1631,7 +1660,8 @@ body.light .bot-msg {
 
             <!-- typing speed test -->
             <a href="./projects/typing-speed-test/index.html" class="card" data-category="utility">
-                <div class="card-cover" style="background:#fde2e4;display:flex;align-items:center;justify-content:center">
+                <div class="card-cover"
+                    style="background:#fde2e4;display:flex;align-items:center;justify-content:center">
                     <i class="ri-keyboard-line"></i>
                 </div>
                 <div class="card-content">
@@ -1653,7 +1683,8 @@ body.light .bot-msg {
 
             <!-- Git commit ai  -->
             <a href="./projects/GitCommit/index.html" class="card" data-category="utility">
-                <div class="card-cover" style="background:#afdfff;display:flex;align-items:center;justify-content:center">
+                <div class="card-cover"
+                    style="background:#afdfff;display:flex;align-items:center;justify-content:center">
                     <i class="ri-checkbox-line"></i>
                 </div>
                 <div class="card-content">
@@ -1662,7 +1693,7 @@ body.light .bot-msg {
                         <span class="category-tag">Utility</span>
                     </div>
                     <p class="card-description">
-                       AI-powered suggestions based on your code changes
+                        AI-powered suggestions based on your code changes
                     </p>
                     <div class="card-tech">
                         <span>HTML</span>
@@ -1674,7 +1705,8 @@ body.light .bot-msg {
 
             <!-- todo list -->
             <a href="./projects/todo-list/index.html" class="card" data-category="utility">
-                <div class="card-cover" style="background:#e0f2fe;display:flex;align-items:center;justify-content:center">
+                <div class="card-cover"
+                    style="background:#e0f2fe;display:flex;align-items:center;justify-content:center">
                     <i class="ri-checkbox-line"></i>
                 </div>
                 <div class="card-content">
@@ -1696,7 +1728,8 @@ body.light .bot-msg {
 
             <!-- Tic Tac Toe -->
             <a href="./projects/tic-tac-toe/index.html" class="card" data-category="strategy">
-                <div class="card-cover" style="background:#ddd6fe;display:flex;align-items:center;justify-content:center">
+                <div class="card-cover"
+                    style="background:#ddd6fe;display:flex;align-items:center;justify-content:center">
                     <i class="ri-grid-line"></i>
                 </div>
                 <div class="card-content">
@@ -1718,7 +1751,8 @@ body.light .bot-msg {
 
             <!-- random quote -->
             <a href="./projects/random-quote-generator/index.html" class="card" data-category="fun">
-                <div class="card-cover" style="background:#fde68a;display:flex;align-items:center;justify-content:center">
+                <div class="card-cover"
+                    style="background:#fde68a;display:flex;align-items:center;justify-content:center">
                     <i class="ri-double-quotes-l"></i>
                 </div>
                 <div class="card-content">
@@ -1741,7 +1775,8 @@ body.light .bot-msg {
 
             <!-- password generator -->
             <a href="./projects/password-generator/index.html" class="card" data-category="security">
-                <div class="card-cover" style="background:#fecaca;display:flex;align-items:center;justify-content:center">
+                <div class="card-cover"
+                    style="background:#fecaca;display:flex;align-items:center;justify-content:center">
                     <i class="ri-lock-password-line"></i>
                 </div>
                 <div class="card-content">
@@ -1763,7 +1798,8 @@ body.light .bot-msg {
 
             <!-- bmi calculator -->
             <a href="./projects/bmi-calculator/index.html" class="card" data-category="utility">
-                <div class="card-cover" style="background:#c7f9cc;display:flex;align-items:center;justify-content:center">
+                <div class="card-cover"
+                    style="background:#c7f9cc;display:flex;align-items:center;justify-content:center">
                     <i class="ri-heart-pulse-line"></i>
                 </div>
                 <div class="card-content">
@@ -1785,7 +1821,8 @@ body.light .bot-msg {
 
             <!-- Age Calculator -->
             <a href="./projects/age-calculator/index.html" class="card" data-category="utility">
-                <div class="card-cover" style="background:#bae6fd;display:flex;align-items:center;justify-content:center">
+                <div class="card-cover"
+                    style="background:#bae6fd;display:flex;align-items:center;justify-content:center">
                     <i class="ri-calendar-line"></i>
                 </div>
                 <div class="card-content">
@@ -1818,7 +1855,7 @@ body.light .bot-msg {
                 </div>
             </a>
 
-                        <!-- Productivity Dashboard -->
+            <!-- Productivity Dashboard -->
             <a href="./projects/MergeDoc/index.html" class="card" data-category="utility">
                 <div class="card-cover" style="background:#7a1050; color:white"><i class="ri-aed-line"></i></div>
                 <div class="card-content">
@@ -1856,7 +1893,7 @@ body.light .bot-msg {
                     <div class="card-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
                 </div>
             </a>
-            
+
 
             <!-- Snake And Ladder -->
             <a href="./snake-and-ladder/index.html" class="card" data-category="game">
@@ -1870,7 +1907,7 @@ body.light .bot-msg {
                     <div class="card-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
                 </div>
             </a>
-            
+
 
             <!-- Currency Converter -->
             <a href="./projects/currency-converter/index.html" class="card" data-category="utility">
@@ -1928,7 +1965,8 @@ body.light .bot-msg {
 
             <!-- Color Palette Generator -->
             <a href="./projects/color-palette-generator/index.html" class="card" data-category="utility">
-                <div class="card-cover" style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white">
+                <div class="card-cover"
+                    style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white">
                     <i class="ri-palette-line"></i>
                 </div>
                 <div class="card-content">
@@ -1943,7 +1981,8 @@ body.light .bot-msg {
 
             <!-- Infinite Runner -->
             <a href="./projects/InfiniteParallaxRunner/index.html" class="card" data-category="action">
-                <div class="card-cover" style="background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color:white">
+                <div class="card-cover"
+                    style="background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color:white">
                     <i class="ri-gamepad-line"></i>
                 </div>
                 <div class="card-content">
@@ -2077,8 +2116,9 @@ body.light .bot-msg {
                 </div>
             </a>
 
-                 <!-- Browser-Based -Code-Editor-and- Compiler-UI Project -->
-            <a href="./projects/Browser-Based -Code-Editor-and- Compiler-UI/index.html" class="card" data-category="game">
+            <!-- Browser-Based -Code-Editor-and- Compiler-UI Project -->
+            <a href="./projects/Browser-Based -Code-Editor-and- Compiler-UI/index.html" class="card"
+                data-category="game">
                 <div class="card-cover" style="background:#8b5cf6; color:white"><i class="ri-keyboard-line"></i></div>
                 <div class="card-content">
                     <div class="card-header-flex">
@@ -2086,7 +2126,8 @@ body.light .bot-msg {
                         <span class="category-tag">Compiler</span>
                     </div>
                     <p class="card-description">
-                        Advanced browser-based code editor with multi-language support, theme switching, console I/O, and local storage.
+                        Advanced browser-based code editor with multi-language support, theme switching, console I/O,
+                        and local storage.
                     </p>
                     <div class="card-tech">
                         <span>HTML</span>
@@ -2095,24 +2136,24 @@ body.light .bot-msg {
                     </div>
                 </div>
             </a>
-             
 
-             <!-- Real-Time Markdown Editor -->
+
+            <!-- Real-Time Markdown Editor -->
             <a href="./projects/Real-Time-Markdown-Editor/index.html" class="card" data-category="tool">
-                 <div class="card-cover" style="background:#ecfeff; color:#0891b2">
-             <i class="ri-markdown-line"></i>
-          </div>
-           <div class="card-content">
-        <div class="card-header-flex">
-                   <h3 class="card-heading">Real-Time Markdown Editor</h3>
-                  <span class="category-tag">Tool</span>
-        </div>
-        <p class="card-description">Write Markdown and see live preview instantly.</p>
-        <div class="card-tech">
-            <span>HTML</span><span>CSS</span><span>JS</span>
-        </div>
-    </div>
-          </a>
+                <div class="card-cover" style="background:#ecfeff; color:#0891b2">
+                    <i class="ri-markdown-line"></i>
+                </div>
+                <div class="card-content">
+                    <div class="card-header-flex">
+                        <h3 class="card-heading">Real-Time Markdown Editor</h3>
+                        <span class="category-tag">Tool</span>
+                    </div>
+                    <p class="card-description">Write Markdown and see live preview instantly.</p>
+                    <div class="card-tech">
+                        <span>HTML</span><span>CSS</span><span>JS</span>
+                    </div>
+                </div>
+            </a>
 
             <!-- Drum-Kit-Activity -->
             <a href="./projects/Drum-Kit-Activity/index.html" class="card" data-category="game">
@@ -2127,7 +2168,7 @@ body.light .bot-msg {
                 </div>
             </a>
 
-                        <!-- Reaction Time -->
+            <!-- Reaction Time -->
             <a href="./projects/ReactionTime/index.html" class="card" data-category="game">
                 <div class="card-cover" style="background:#3da4ff; color:white"><i class="ri-time-line"></i></div>
                 <div class="card-content">
@@ -2145,9 +2186,9 @@ body.light .bot-msg {
                     </div>
                 </div>
             </a>
-                        <!-- Reflex Game -->
+            <!-- Reflex Game -->
             <a href="./projects/reflex-game/index.html" class="card" data-category="game">
-                <div class="card-cover reflex-cover" ><i class="ri-cursor-line"></i></div>
+                <div class="card-cover reflex-cover"><i class="ri-cursor-line"></i></div>
                 <div class="card-content">
                     <div class="card-header-flex">
                         <h3 class="card-heading">Reflex Game</h3>
@@ -2239,27 +2280,27 @@ body.light .bot-msg {
     </section>
 
 
-        <!--Text-Formatter-Cleaner -->
+    <!--Text-Formatter-Cleaner -->
     <a href="projects/text-formatter-cleaner/index.html" class="card" data-category="tools">
-    <div class="card-cover">
-        <i class="ri-file-text-line"></i>
-    </div>
-    <div class="card-content">
-        <div class="card-header-flex">
-            <h3 class="card-heading">Text Formatter & Cleaner</h3>
-            <span class="category-tag">Tools</span>
+        <div class="card-cover">
+            <i class="ri-file-text-line"></i>
         </div>
-        <p class="card-description">
-            Format text into different cases, clean extra spaces,
-            and analyze word and character count easily.
-        </p>
-        <div class="card-tech">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
+        <div class="card-content">
+            <div class="card-header-flex">
+                <h3 class="card-heading">Text Formatter & Cleaner</h3>
+                <span class="category-tag">Tools</span>
+            </div>
+            <p class="card-description">
+                Format text into different cases, clean extra spaces,
+                and analyze word and character count easily.
+            </p>
+            <div class="card-tech">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+            </div>
         </div>
-    </div>
-</a>
+    </a>
 
     <!-- Contributors Section -->
     <section id="contributors" class="contributors-section">
@@ -2269,93 +2310,74 @@ body.light .bot-msg {
             <p class="section-subtitle">Thanks to everyone who has contributed to this project!</p>
         </div>
 
-    <!-- Contributor Controls -->
-<div class="controls-wrapper" style="margin-bottom:2rem; display:flex; gap:1rem; flex-wrap:wrap; justify-content:center">
+        <!-- Contributor Controls -->
+        <div class="controls-wrapper"
+            style="margin-bottom:2rem; display:flex; gap:1rem; flex-wrap:wrap; justify-content:center">
 
-    <!-- Search -->
-    <div class="search-box">
-        <i class="ri-search-line"></i>
-        <input type="text" id="contributor-search" placeholder="Search contributors...">
-    </div>
+            <!-- Search -->
+            <div class="search-box">
+                <i class="ri-search-line"></i>
+                <input type="text" id="contributor-search" placeholder="Search contributors...">
+            </div>
 
-    <!-- Role Filter -->
-    <div class="sort-box">
-        <select id="role-filter">
-            <option value="all">All Roles</option>
-            <option value="maintainer">Maintainer</option>
-            <option value="developer">Developer</option>
-            <option value="contributor">Contributor</option>
-        </select>
-    </div>
+            <!-- Role Filter -->
+            <div class="sort-box">
+                <select id="role-filter">
+                    <option value="all">All Roles</option>
+                    <option value="maintainer">Maintainer</option>
+                    <option value="developer">Developer</option>
+                    <option value="contributor">Contributor</option>
+                </select>
+            </div>
 
-    <!-- Sort -->
-    <div class="sort-box">
-        <select id="contributor-sort">
-            <option value="default">Sort</option>
-            <option value="az">A → Z</option>
-            <option value="za">Z → A</option>
-            <option value="newest">Newest</option>
-        </select>
-    </div>
+            <!-- Sort -->
+            <div class="sort-box">
+                <select id="contributor-sort">
+                    <option value="default">Sort</option>
+                    <option value="az">A → Z</option>
+                    <option value="za">Z → A</option>
+                    <option value="newest">Newest</option>
+                </select>
+            </div>
 
-    <!-- Reset -->
-    <button id="reset-contributor-filters" class="view-all-btn">
-        Reset Filters
-    </button>
-</div>
-
-
-    <div class="contributors-grid" id="contributors-grid">
-        <!-- Loading skeletons will be shown here initially -->
-        <div class="loading-skeleton">
-            <div class="skeleton-avatar"></div>
-            <div class="skeleton-text"></div>
-            <div class="skeleton-text"></div>
+            <!-- Reset -->
+            <button id="reset-contributor-filters" class="view-all-btn">
+                Reset Filters
+            </button>
         </div>
-        <div class="loading-skeleton">
-            <div class="skeleton-avatar"></div>
-            <div class="skeleton-text"></div>
-            <div class="skeleton-text"></div>
-        </div>
-        <div class="loading-skeleton">
-            <div class="skeleton-avatar"></div>
-            <div class="skeleton-text"></div>
-            <div class="skeleton-text"></div>
-        </div>
-    </div>
 
-    <div class="contributors-show-more">
-        <button id="loadMoreContributors" class="view-all-btn" style="display: none;">
-            <i class="ri-user-add-line"></i> Load More Contributors
-        </button>
-    </div>
-</section>
+
+        <div class="contributors-grid" id="contributors-grid">
+            <!-- Loading skeletons will be shown here initially -->
+            <div class="loading-skeleton">
+                <div class="skeleton-avatar"></div>
+                <div class="skeleton-text"></div>
+                <div class="skeleton-text"></div>
+            </div>
+            <div class="loading-skeleton">
+                <div class="skeleton-avatar"></div>
+                <div class="skeleton-text"></div>
+                <div class="skeleton-text"></div>
+            </div>
+            <div class="loading-skeleton">
+                <div class="skeleton-avatar"></div>
+                <div class="skeleton-text"></div>
+                <div class="skeleton-text"></div>
+            </div>
+        </div>
+
+        <div class="contributors-show-more">
+            <button id="loadMoreContributors" class="view-all-btn" style="display: none;">
+                <i class="ri-user-add-line"></i> Load More Contributors
+            </button>
+        </div>
+    </section>
 
     <!-- Scroll to Top Button -->
     <button id="scrollToTopBtn" aria-label="Scroll to top">
         <i class="ri-arrow-up-line"></i>
     </button>
 
-<footer class="footer">
-    <div class="footer-container">
-        <p>© 2026 OpenPlayground. Built by the community.</p>
-        <div class="footer-links">
-            <a href="#projects">Projects</a>
-            <a href="#contribute">Contribute</a>
-            <a href="https://github.com/YadavAkhileshh/OpenPlayground" target="_blank">GitHub</a>
-                    <a href="sitemap.html">Sitemap</a>
-
-
-        <!-- Footer Grid -->
-        <div class="footer-content">
-            <!-- Branding Section -->
-            <div class="footer-section footer-branding">
-                <h4 class="footer-logo">OpenPlayground</h4>
-                <p class="footer-description">
-                    A community-driven platform where developers showcase their creativity through interactive web projects. Build, share, and explore amazing projects.
-                </p>
-                <p class="footer-copyright">© 2026 OpenPlayground. Built by the community.</p>
-            </div>
     <footer class="footer">
         <div class="footer-container">
             <!-- Footer Grid -->
@@ -2436,36 +2458,36 @@ body.light .bot-msg {
             </div>
         </div>
     </footer>
-<script>
-    // GitHub API Configuration
-    const GITHUB_API_URL = 'https://api.github.com/repos/YadavAkhileshh/OpenPlayground/contributors';
-    const CONTRIBUTORS_TO_SHOW = 12; // Show 12 contributors initially
+    <script>
+        // GitHub API Configuration
+        const GITHUB_API_URL = 'https://api.github.com/repos/YadavAkhileshh/OpenPlayground/contributors';
+        const CONTRIBUTORS_TO_SHOW = 12; // Show 12 contributors initially
 
-    // DOM Elements
-    const contributorsGrid = document.getElementById('contributors-grid');
-    const loadMoreBtn = document.getElementById('loadMoreContributors');
+        // DOM Elements
+        const contributorsGrid = document.getElementById('contributors-grid');
+        const loadMoreBtn = document.getElementById('loadMoreContributors');
 
-    // Fetch contributors from GitHub API
-    async function fetchContributors() {
-        try {
-            const response = await fetch(`${GITHUB_API_URL}?per_page=100`);
-            
-            if (!response.ok) {
-                throw new Error(`GitHub API error: ${response.status}`);
+        // Fetch contributors from GitHub API
+        async function fetchContributors() {
+            try {
+                const response = await fetch(`${GITHUB_API_URL}?per_page=100`);
+
+                if (!response.ok) {
+                    throw new Error(`GitHub API error: ${response.status}`);
+                }
+
+                const contributors = await response.json();
+                return contributors;
+            } catch (error) {
+                console.error('Error fetching contributors:', error);
+                showErrorState();
+                return [];
             }
-
-            const contributors = await response.json();
-            return contributors;
-        } catch (error) {
-            console.error('Error fetching contributors:', error);
-            showErrorState();
-            return [];
         }
-    }
 
-    // Create contributor card HTML (SIMPLIFIED - no User/Type)
-    function createContributorCard(contributor) {
-        return `
+        // Create contributor card HTML (SIMPLIFIED - no User/Type)
+        function createContributorCard(contributor) {
+            return `
             <div class="contributor-card">
                 <img 
                     src="${contributor.avatar_url}" 
@@ -2493,19 +2515,19 @@ body.light .bot-msg {
                 </a>
             </div>
         `;
-    }
+        }
 
 
-function getRole(contributor) {
-    if (contributor.permissions?.admin) return "maintainer";
-    if (contributor.contributions >= 20) return "developer";
-    return "contributor";
-}
+        function getRole(contributor) {
+            if (contributor.permissions?.admin) return "maintainer";
+            if (contributor.contributions >= 50) return "developer";
+            return "contributor";
+        }
 
-function createContributorCard(contributor) {
-    const role = getRole(contributor);
+        function createContributorCard(contributor) {
+            const role = getRole(contributor);
 
-    return `
+            return `
         <div class="contributor-card"
              data-role="${role}"
              data-name="${contributor.login.toLowerCase()}"
@@ -2529,614 +2551,614 @@ function createContributorCard(contributor) {
             </a>
         </div>
     `;
-}
-
-    // Display contributors in the grid
-    function displayContributors(contributors) {
-        // Remove loading skeletons
-        contributorsGrid.innerHTML = '';
-        
-        if (contributors.length === 0) {
-            showNoContributors();
-            return;
         }
 
-        // Filter out bots and limit to CONTRIBUTORS_TO_SHOW
-        const filteredContributors = contributors
-            .filter(contributor => !contributor.login.includes('[bot]'))
-            .slice(0, CONTRIBUTORS_TO_SHOW);
+        // Display contributors in the grid
+        function displayContributors(contributors) {
+            // Remove loading skeletons
+            contributorsGrid.innerHTML = '';
 
-        // Add contributor cards
-        filteredContributors.forEach(contributor => {
-            const cardHTML = createContributorCard(contributor);
-            contributorsGrid.innerHTML += cardHTML;
-        });
+            if (contributors.length === 0) {
+                showNoContributors();
+                return;
+            }
 
-        // Show load more button if there are more contributors
-        const humanContributors = contributors.filter(c => !c.login.includes('[bot]'));
-        if (humanContributors.length > CONTRIBUTORS_TO_SHOW) {
-            loadMoreBtn.style.display = 'inline-flex';
+            // Filter out bots and limit to CONTRIBUTORS_TO_SHOW
+            const filteredContributors = contributors
+                .filter(contributor => !contributor.login.includes('[bot]'))
+                .slice(0, CONTRIBUTORS_TO_SHOW);
+
+            // Add contributor cards
+            filteredContributors.forEach(contributor => {
+                const cardHTML = createContributorCard(contributor);
+                contributorsGrid.innerHTML += cardHTML;
+            });
+
+            // Show load more button if there are more contributors
+            const humanContributors = contributors.filter(c => !c.login.includes('[bot]'));
+            if (humanContributors.length > CONTRIBUTORS_TO_SHOW) {
+                loadMoreBtn.style.display = 'inline-flex';
+            }
         }
-    }
 
-    // Load more contributors
-    async function loadMoreContributors() {
-        const allContributors = await fetchContributors();
-        const humanContributors = allContributors.filter(c => !c.login.includes('[bot]'));
-        
-        // Show all contributors
-        contributorsGrid.innerHTML = '';
-        humanContributors.forEach(contributor => {
-            const cardHTML = createContributorCard(contributor);
-            contributorsGrid.innerHTML += cardHTML;
-        });
-        
-        // Hide the load more button after clicking
-        loadMoreBtn.style.display = 'none';
-    }
+        // Load more contributors
+        async function loadMoreContributors() {
+            const allContributors = await fetchContributors();
+            const humanContributors = allContributors.filter(c => !c.login.includes('[bot]'));
 
-    // Show error state
-    function showErrorState() {
-        contributorsGrid.innerHTML = `
+            // Show all contributors
+            contributorsGrid.innerHTML = '';
+            humanContributors.forEach(contributor => {
+                const cardHTML = createContributorCard(contributor);
+                contributorsGrid.innerHTML += cardHTML;
+            });
+
+            // Hide the load more button after clicking
+            loadMoreBtn.style.display = 'none';
+        }
+
+        // Show error state
+        function showErrorState() {
+            contributorsGrid.innerHTML = `
             <div class="contributors-error">
                 <div class="error-icon">😕</div>
                 <h3>Unable to load contributors</h3>
                 <p>Please check your internet connection or try again later.</p>
             </div>
         `;
-        loadMoreBtn.style.display = 'none';
-    }
+            loadMoreBtn.style.display = 'none';
+        }
 
-    // Show no contributors state
-    function showNoContributors() {
-        contributorsGrid.innerHTML = `
+        // Show no contributors state
+        function showNoContributors() {
+            contributorsGrid.innerHTML = `
             <div class="contributors-error">
                 <div class="error-icon">👤</div>
                 <h3>No contributors found</h3>
                 <p>Be the first to contribute to this project!</p>
             </div>
         `;
-        loadMoreBtn.style.display = 'none';
-    }
+            loadMoreBtn.style.display = 'none';
+        }
 
-    // Initialize contributors
-    async function initContributors() {
-        const contributors = await fetchContributors();
-        displayContributors(contributors);
-    }
+        // Initialize contributors
+        async function initContributors() {
+            const contributors = await fetchContributors();
+            displayContributors(contributors);
+        }
 
-    // Event Listeners
-    loadMoreBtn.addEventListener('click', loadMoreContributors);
+        // Event Listeners
+        loadMoreBtn.addEventListener('click', loadMoreContributors);
 
-    // Initialize contributors when the page loads
-    window.addEventListener('load', initContributors);
-    const searchInput = document.getElementById("contributor-search");
-const roleFilter = document.getElementById("role-filter");
-const sortSelect = document.getElementById("contributor-sort");
-const resetBtn = document.getElementById("reset-contributor-filters");
+        // Initialize contributors when the page loads
+        window.addEventListener('load', initContributors);
+        const searchInput = document.getElementById("contributor-search");
+        const roleFilter = document.getElementById("role-filter");
+        const sortSelect = document.getElementById("contributor-sort");
+        const resetBtn = document.getElementById("reset-contributor-filters");
 
-function applyContributorFilters() {
-    const search = searchInput.value.toLowerCase();
-    const role = roleFilter.value;
-    const sort = sortSelect.value;
+        function applyContributorFilters() {
+            const search = searchInput.value.toLowerCase();
+            const role = roleFilter.value;
+            const sort = sortSelect.value;
 
-    let cards = Array.from(document.querySelectorAll(".contributor-card"));
+            let cards = Array.from(document.querySelectorAll(".contributor-card"));
 
-    // SEARCH + ROLE FILTER
-    cards.forEach(card => {
-        const name = card.dataset.name;
-        const cardRole = card.dataset.role;
+            // SEARCH + ROLE FILTER
+            cards.forEach(card => {
+                const name = card.dataset.name;
+                const cardRole = card.dataset.role;
 
-        const matchesSearch = name.includes(search);
-        const matchesRole = role === "all" || role === cardRole;
+                const matchesSearch = name.includes(search);
+                const matchesRole = role === "all" || role === cardRole;
 
-        card.style.display = (matchesSearch && matchesRole) ? "flex" : "none";
-    });
+                card.style.display = (matchesSearch && matchesRole) ? "flex" : "none";
+            });
 
-    // SORT
-    let visibleCards = cards.filter(c => c.style.display !== "none");
+            // SORT
+            let visibleCards = cards.filter(c => c.style.display !== "none");
 
-    if (sort === "az") {
-        visibleCards.sort((a, b) =>
-            a.dataset.name.localeCompare(b.dataset.name)
-        );
-    } else if (sort === "za") {
-        visibleCards.sort((a, b) =>
-            b.dataset.name.localeCompare(a.dataset.name)
-        );
-    } else if (sort === "newest") {
-        visibleCards.sort((a, b) =>
-            b.dataset.date - a.dataset.date
-        );
-    }
-
-    visibleCards.forEach(card => contributorsGrid.appendChild(card));
-}
-
-// EVENTS
-searchInput.addEventListener("input", applyContributorFilters);
-roleFilter.addEventListener("change", applyContributorFilters);
-sortSelect.addEventListener("change", applyContributorFilters);
-
-// RESET
-resetBtn.addEventListener("click", () => {
-    searchInput.value = "";
-    roleFilter.value = "all";
-    sortSelect.value = "default";
-    applyContributorFilters();
-});
-
-</script> 
-
-
-
-<script>
-    // Force scroll to top when page loads
-    window.addEventListener('load', function() {
-        // Scroll to top immediately
-        window.scrollTo(0, 0);
-        
-        // Also scroll to top after a short delay to ensure it works
-        setTimeout(() => {
-            window.scrollTo(0, 0);
-        }, 100);
-    });
-
-    // Also scroll to top when DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
-        window.scrollTo(0, 0);
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                const navbarHeight = 75;
-                const targetPosition = targetElement.offsetTop - navbarHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+            if (sort === "az") {
+                visibleCards.sort((a, b) =>
+                    a.dataset.name.localeCompare(b.dataset.name)
+                );
+            } else if (sort === "za") {
+                visibleCards.sort((a, b) =>
+                    b.dataset.name.localeCompare(a.dataset.name)
+                );
+            } else if (sort === "newest") {
+                visibleCards.sort((a, b) =>
+                    b.dataset.date - a.dataset.date
+                );
             }
+
+            visibleCards.forEach(card => contributorsGrid.appendChild(card));
+        }
+
+        // EVENTS
+        searchInput.addEventListener("input", applyContributorFilters);
+        roleFilter.addEventListener("change", applyContributorFilters);
+        sortSelect.addEventListener("change", applyContributorFilters);
+
+        // RESET
+        resetBtn.addEventListener("click", () => {
+            searchInput.value = "";
+            roleFilter.value = "all";
+            sortSelect.value = "default";
+            applyContributorFilters();
         });
-    });
-</script> 
-<script>
-    // PROJECTS FILTERING AND PAGINATION SYSTEM
-    
-    class ProjectManager {
-        constructor() {
-            this.cards = Array.from(document.querySelectorAll(".projects-container .card"));
-            this.filteredCards = [];
-            this.paginationContainer = document.getElementById("pagination-controls");
-            this.emptyState = document.getElementById("empty-state");
-            this.searchInput = document.getElementById("project-search");
-            this.sortSelect = document.getElementById("project-sort");
-            this.filterButtons = document.querySelectorAll(".filter-btn");
-            
-            this.currentPage = 1;
-            this.cardsPerPage = 9;
-            this.currentFilter = "all";
-            this.currentSort = "default";
-            this.currentSearch = "";
-            
-            this.init();
-        }
-        
-        init() {
-            // Add data attributes for sorting if not present
-            this.addDateAttributes();
-            
-            // Initialize event listeners
-            this.initEventListeners();
-            
-            // Apply initial filter and sort
-            this.applyFilters();
-            this.showPage(1);
-        }
-        
-        addDateAttributes() {
-            // Add date attributes for sorting by "newest"
-            const categories = ["utility", "puzzle", "game", "strategy", "action", "fun", "security", "communication", "finance"];
-            const currentDate = new Date();
-            
-            this.cards.forEach((card, index) => {
-                if (!card.hasAttribute('data-date')) {
-                    // Create incremental dates (newer projects first)
-                    const daysAgo = Math.floor(index / 3); // Group projects by 3
-                    const fakeDate = new Date(currentDate);
-                    fakeDate.setDate(currentDate.getDate() - daysAgo);
-                    card.setAttribute('data-date', fakeDate.toISOString());
+
+    </script>
+
+
+
+    <script>
+        // Force scroll to top when page loads
+        window.addEventListener('load', function () {
+            // Scroll to top immediately
+            window.scrollTo(0, 0);
+
+            // Also scroll to top after a short delay to ensure it works
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 100);
+        });
+
+        // Also scroll to top when DOM is ready
+        document.addEventListener('DOMContentLoaded', function () {
+            window.scrollTo(0, 0);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = 75;
+                    const targetPosition = targetElement.offsetTop - navbarHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             });
-        }
-        
-        initEventListeners() {
-            // Search input
-            this.searchInput.addEventListener("input", (e) => {
-                this.currentSearch = e.target.value.toLowerCase();
+        });
+    </script>
+    <script>
+        // PROJECTS FILTERING AND PAGINATION SYSTEM
+
+        class ProjectManager {
+            constructor() {
+                this.cards = Array.from(document.querySelectorAll(".projects-container .card"));
+                this.filteredCards = [];
+                this.paginationContainer = document.getElementById("pagination-controls");
+                this.emptyState = document.getElementById("empty-state");
+                this.searchInput = document.getElementById("project-search");
+                this.sortSelect = document.getElementById("project-sort");
+                this.filterButtons = document.querySelectorAll(".filter-btn");
+
+                this.currentPage = 1;
+                this.cardsPerPage = 9;
+                this.currentFilter = "all";
+                this.currentSort = "default";
+                this.currentSearch = "";
+
+                this.init();
+            }
+
+            init() {
+                // Add data attributes for sorting if not present
+                this.addDateAttributes();
+
+                // Initialize event listeners
+                this.initEventListeners();
+
+                // Apply initial filter and sort
                 this.applyFilters();
                 this.showPage(1);
-            });
-            
-            // Sort select
-            this.sortSelect.addEventListener("change", (e) => {
-                this.currentSort = e.target.value;
-                this.applyFilters();
-                this.showPage(1);
-            });
-            
-            // Filter buttons
-            this.filterButtons.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    // Update active button
-                    this.filterButtons.forEach(b => b.classList.remove("active"));
-                    btn.classList.add("active");
-                    
-                    // Apply filter
-                    this.currentFilter = btn.dataset.filter;
+            }
+
+            addDateAttributes() {
+                // Add date attributes for sorting by "newest"
+                const categories = ["utility", "puzzle", "game", "strategy", "action", "fun", "security", "communication", "finance"];
+                const currentDate = new Date();
+
+                this.cards.forEach((card, index) => {
+                    if (!card.hasAttribute('data-date')) {
+                        // Create incremental dates (newer projects first)
+                        const daysAgo = Math.floor(index / 3); // Group projects by 3
+                        const fakeDate = new Date(currentDate);
+                        fakeDate.setDate(currentDate.getDate() - daysAgo);
+                        card.setAttribute('data-date', fakeDate.toISOString());
+                    }
+                });
+            }
+
+            initEventListeners() {
+                // Search input
+                this.searchInput.addEventListener("input", (e) => {
+                    this.currentSearch = e.target.value.toLowerCase();
                     this.applyFilters();
                     this.showPage(1);
                 });
-            });
-            
-            // Window resize for responsive pagination
-            window.addEventListener("resize", () => {
+
+                // Sort select
+                this.sortSelect.addEventListener("change", (e) => {
+                    this.currentSort = e.target.value;
+                    this.applyFilters();
+                    this.showPage(1);
+                });
+
+                // Filter buttons
+                this.filterButtons.forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        // Update active button
+                        this.filterButtons.forEach(b => b.classList.remove("active"));
+                        btn.classList.add("active");
+
+                        // Apply filter
+                        this.currentFilter = btn.dataset.filter;
+                        this.applyFilters();
+                        this.showPage(1);
+                    });
+                });
+
+                // Window resize for responsive pagination
+                window.addEventListener("resize", () => {
+                    this.updatePagination();
+                });
+            }
+
+            applyFilters() {
+                let filtered = [...this.cards];
+
+                // Apply search filter
+                if (this.currentSearch) {
+                    filtered = filtered.filter(card => {
+                        const title = card.querySelector(".card-heading").textContent.toLowerCase();
+                        const description = card.querySelector(".card-description").textContent.toLowerCase();
+                        const tech = card.querySelector(".card-tech").textContent.toLowerCase();
+                        const category = card.dataset.category.toLowerCase();
+
+                        return title.includes(this.currentSearch) ||
+                            description.includes(this.currentSearch) ||
+                            tech.includes(this.currentSearch) ||
+                            category.includes(this.currentSearch);
+                    });
+                }
+
+                // Apply category filter
+                if (this.currentFilter !== "all") {
+                    filtered = filtered.filter(card =>
+                        card.dataset.category === this.currentFilter
+                    );
+                }
+
+                // Apply sorting
+                filtered = this.sortCards(filtered);
+
+                this.filteredCards = filtered;
                 this.updatePagination();
-            });
-        }
-        
-        applyFilters() {
-            let filtered = [...this.cards];
-            
-            // Apply search filter
-            if (this.currentSearch) {
-                filtered = filtered.filter(card => {
-                    const title = card.querySelector(".card-heading").textContent.toLowerCase();
-                    const description = card.querySelector(".card-description").textContent.toLowerCase();
-                    const tech = card.querySelector(".card-tech").textContent.toLowerCase();
-                    const category = card.dataset.category.toLowerCase();
-                    
-                    return title.includes(this.currentSearch) ||
-                           description.includes(this.currentSearch) ||
-                           tech.includes(this.currentSearch) ||
-                           category.includes(this.currentSearch);
-                });
+                this.updateEmptyState();
             }
-            
-            // Apply category filter
-            if (this.currentFilter !== "all") {
-                filtered = filtered.filter(card => 
-                    card.dataset.category === this.currentFilter
-                );
-            }
-            
-            // Apply sorting
-            filtered = this.sortCards(filtered);
-            
-            this.filteredCards = filtered;
-            this.updatePagination();
-            this.updateEmptyState();
-        }
-        
-        sortCards(cards) {
-            const sorted = [...cards];
-            
-            switch(this.currentSort) {
-                case "az":
-                    sorted.sort((a, b) => {
-                        const titleA = a.querySelector(".card-heading").textContent.toLowerCase();
-                        const titleB = b.querySelector(".card-heading").textContent.toLowerCase();
-                        return titleA.localeCompare(titleB);
-                    });
-                    break;
-                    
-                case "za":
-                    sorted.sort((a, b) => {
-                        const titleA = a.querySelector(".card-heading").textContent.toLowerCase();
-                        const titleB = b.querySelector(".card-heading").textContent.toLowerCase();
-                        return titleB.localeCompare(titleA);
-                    });
-                    break;
-                    
-                case "newest":
-                    sorted.sort((a, b) => {
-                        const dateA = new Date(a.getAttribute("data-date"));
-                        const dateB = new Date(b.getAttribute("data-date"));
-                        return dateB - dateA; // Newest first
-                    });
-                    break;
-                    
-                case "default":
-                default:
-                    // Keep original order
-                    break;
-            }
-            
-            return sorted;
-        }
-        
-        showPage(page) {
-            this.currentPage = page;
-            const start = (page - 1) * this.cardsPerPage;
-            const end = start + this.cardsPerPage;
-            
-            // Hide all cards first
-            this.cards.forEach(card => {
-                card.style.display = "none";
-                card.classList.add("hidden");
-            });
-            
-            // Show filtered cards for current page
-            this.filteredCards.forEach((card, index) => {
-                if (index >= start && index < end) {
-                    card.style.display = "block";
-                    card.classList.remove("hidden");
-                }
-            });
-            
-            this.updateActiveButton();
-            this.scrollToProjects();
-        }
-        
-        updatePagination() {
-            this.paginationContainer.innerHTML = "";
-            const totalPages = Math.ceil(this.filteredCards.length / this.cardsPerPage);
-            
-            // Only show pagination if there are multiple pages
-            if (totalPages > 1) {
-                // Previous button
-                if (this.currentPage > 1) {
-                    const prevBtn = document.createElement("button");
-                    prevBtn.innerHTML = "&laquo;";
-                    prevBtn.addEventListener("click", () => this.showPage(this.currentPage - 1));
-                    this.paginationContainer.appendChild(prevBtn);
-                }
-                
-                // Page buttons
-                const maxVisiblePages = 5;
-                let startPage = Math.max(1, this.currentPage - Math.floor(maxVisiblePages / 2));
-                let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-                
-                // Adjust start page if we're near the end
-                if (endPage - startPage + 1 < maxVisiblePages) {
-                    startPage = Math.max(1, endPage - maxVisiblePages + 1);
-                }
-                
-                for (let i = startPage; i <= endPage; i++) {
-                    const btn = document.createElement("button");
-                    btn.textContent = i;
-                    btn.classList.toggle("active", i === this.currentPage);
-                    btn.addEventListener("click", () => this.showPage(i));
-                    this.paginationContainer.appendChild(btn);
-                }
-                
-                // Next button
-                if (this.currentPage < totalPages) {
-                    const nextBtn = document.createElement("button");
-                    nextBtn.innerHTML = "&raquo;";
-                    nextBtn.addEventListener("click", () => this.showPage(this.currentPage + 1));
-                    this.paginationContainer.appendChild(nextBtn);
-                }
-                
-                this.paginationContainer.style.display = "flex";
-            } else {
-                this.paginationContainer.style.display = "none";
-            }
-        }
-        
-        updateActiveButton() {
-            const buttons = this.paginationContainer.querySelectorAll("button");
-            buttons.forEach((btn, index) => {
-                // Skip previous/next buttons
-                if (btn.innerHTML !== "&laquo;" && btn.innerHTML !== "&raquo;") {
-                    const pageNum = parseInt(btn.textContent);
-                    btn.classList.toggle("active", pageNum === this.currentPage);
-                }
-            });
-        }
-        
-        updateEmptyState() {
-            if (this.filteredCards.length === 0) {
-                this.emptyState.style.display = "block";
-            } else {
-                this.emptyState.style.display = "none";
-            }
-        }
-        
-        scrollToProjects() {
-            // Smooth scroll to projects section when changing pages
-            const projectsSection = document.getElementById("projects");
-            if (projectsSection && this.currentPage > 1) {
-                const navbarHeight = 75;
-                const targetPosition = projectsSection.offsetTop - navbarHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: "smooth"
-                });
-            }
-        }
-    }
-    
-    // Initialize when DOM is loaded
-    document.addEventListener("DOMContentLoaded", function() {
-        const projectManager = new ProjectManager();
-        
-        // Expose to global scope if needed
-        window.ProjectManager = projectManager;
-    });
-</script>
 
-<script>
-    // DARK THEME TOGGLE FUNCTIONALITY
-    
-    // Get theme toggle button
-    const themeToggle = document.getElementById('themeToggle');
-    const html = document.documentElement;
-    
-    // Check for saved theme preference or default to light
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    html.setAttribute('data-theme', savedTheme);
-    
-    // Toggle theme function
-    function toggleTheme() {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        // Update theme
-        html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-    }
-    
-    // Add event listener to theme toggle button
-    themeToggle.addEventListener('click', toggleTheme);
-    
-    // Optional: Detect system preference
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    // If no saved preference, use system preference
-    if (!localStorage.getItem('theme')) {
-        if (prefersDarkScheme.matches) {
-            html.setAttribute('data-theme', 'dark');
+            sortCards(cards) {
+                const sorted = [...cards];
+
+                switch (this.currentSort) {
+                    case "az":
+                        sorted.sort((a, b) => {
+                            const titleA = a.querySelector(".card-heading").textContent.toLowerCase();
+                            const titleB = b.querySelector(".card-heading").textContent.toLowerCase();
+                            return titleA.localeCompare(titleB);
+                        });
+                        break;
+
+                    case "za":
+                        sorted.sort((a, b) => {
+                            const titleA = a.querySelector(".card-heading").textContent.toLowerCase();
+                            const titleB = b.querySelector(".card-heading").textContent.toLowerCase();
+                            return titleB.localeCompare(titleA);
+                        });
+                        break;
+
+                    case "newest":
+                        sorted.sort((a, b) => {
+                            const dateA = new Date(a.getAttribute("data-date"));
+                            const dateB = new Date(b.getAttribute("data-date"));
+                            return dateB - dateA; // Newest first
+                        });
+                        break;
+
+                    case "default":
+                    default:
+                        // Keep original order
+                        break;
+                }
+
+                return sorted;
+            }
+
+            showPage(page) {
+                this.currentPage = page;
+                const start = (page - 1) * this.cardsPerPage;
+                const end = start + this.cardsPerPage;
+
+                // Hide all cards first
+                this.cards.forEach(card => {
+                    card.style.display = "none";
+                    card.classList.add("hidden");
+                });
+
+                // Show filtered cards for current page
+                this.filteredCards.forEach((card, index) => {
+                    if (index >= start && index < end) {
+                        card.style.display = "block";
+                        card.classList.remove("hidden");
+                    }
+                });
+
+                this.updateActiveButton();
+                this.scrollToProjects();
+            }
+
+            updatePagination() {
+                this.paginationContainer.innerHTML = "";
+                const totalPages = Math.ceil(this.filteredCards.length / this.cardsPerPage);
+
+                // Only show pagination if there are multiple pages
+                if (totalPages > 1) {
+                    // Previous button
+                    if (this.currentPage > 1) {
+                        const prevBtn = document.createElement("button");
+                        prevBtn.innerHTML = "&laquo;";
+                        prevBtn.addEventListener("click", () => this.showPage(this.currentPage - 1));
+                        this.paginationContainer.appendChild(prevBtn);
+                    }
+
+                    // Page buttons
+                    const maxVisiblePages = 5;
+                    let startPage = Math.max(1, this.currentPage - Math.floor(maxVisiblePages / 2));
+                    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+                    // Adjust start page if we're near the end
+                    if (endPage - startPage + 1 < maxVisiblePages) {
+                        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+                    }
+
+                    for (let i = startPage; i <= endPage; i++) {
+                        const btn = document.createElement("button");
+                        btn.textContent = i;
+                        btn.classList.toggle("active", i === this.currentPage);
+                        btn.addEventListener("click", () => this.showPage(i));
+                        this.paginationContainer.appendChild(btn);
+                    }
+
+                    // Next button
+                    if (this.currentPage < totalPages) {
+                        const nextBtn = document.createElement("button");
+                        nextBtn.innerHTML = "&raquo;";
+                        nextBtn.addEventListener("click", () => this.showPage(this.currentPage + 1));
+                        this.paginationContainer.appendChild(nextBtn);
+                    }
+
+                    this.paginationContainer.style.display = "flex";
+                } else {
+                    this.paginationContainer.style.display = "none";
+                }
+            }
+
+            updateActiveButton() {
+                const buttons = this.paginationContainer.querySelectorAll("button");
+                buttons.forEach((btn, index) => {
+                    // Skip previous/next buttons
+                    if (btn.innerHTML !== "&laquo;" && btn.innerHTML !== "&raquo;") {
+                        const pageNum = parseInt(btn.textContent);
+                        btn.classList.toggle("active", pageNum === this.currentPage);
+                    }
+                });
+            }
+
+            updateEmptyState() {
+                if (this.filteredCards.length === 0) {
+                    this.emptyState.style.display = "block";
+                } else {
+                    this.emptyState.style.display = "none";
+                }
+            }
+
+            scrollToProjects() {
+                // Smooth scroll to projects section when changing pages
+                const projectsSection = document.getElementById("projects");
+                if (projectsSection && this.currentPage > 1) {
+                    const navbarHeight = 75;
+                    const targetPosition = projectsSection.offsetTop - navbarHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            }
         }
-    }
-    
-    // Listen for system theme changes
-    prefersDarkScheme.addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-            const newTheme = e.matches ? 'dark' : 'light';
+
+        // Initialize when DOM is loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            const projectManager = new ProjectManager();
+
+            // Expose to global scope if needed
+            window.ProjectManager = projectManager;
+        });
+    </script>
+
+    <script>
+        // DARK THEME TOGGLE FUNCTIONALITY
+
+        // Get theme toggle button
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to light
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+
+        // Toggle theme function
+        function toggleTheme() {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+            // Update theme
             html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
         }
-    });
 
-    // Add smooth theme transition
-    document.documentElement.style.transition = 'background-color 0.3s ease, color 0.3s ease';
-</script>
+        // Add event listener to theme toggle button
+        themeToggle.addEventListener('click', toggleTheme);
+
+        // Optional: Detect system preference
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // If no saved preference, use system preference
+        if (!localStorage.getItem('theme')) {
+            if (prefersDarkScheme.matches) {
+                html.setAttribute('data-theme', 'dark');
+            }
+        }
+
+        // Listen for system theme changes
+        prefersDarkScheme.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                const newTheme = e.matches ? 'dark' : 'light';
+                html.setAttribute('data-theme', newTheme);
+            }
+        });
+
+        // Add smooth theme transition
+        document.documentElement.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+    </script>
 
 
     <!-- Floating Chatbot -->
-<div class="chatbot-btn" onclick="toggleChatbot()">🤖</div>
+    <div class="chatbot-btn" onclick="toggleChatbot()">🤖</div>
 
-<div class="chatbot-container" id="chatbot">
-  <div class="chatbot-header">
-    OpenPlayground AI
-    <span onclick="toggleChatbot()">✖</span>
-  </div>
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">
+            OpenPlayground AI
+            <span onclick="toggleChatbot()">✖</span>
+        </div>
 
-  <div class="chatbot-messages" id="chatMessages">
-    <div class="bot-msg">
-      Hi 👋 I’m OpenPlayground AI. How can I help you?
-    </div>
-  </div>
-
-  <div class="chatbot-input">
-    <input type="text" id="chatInput" placeholder="Ask something..." />
-    <button onclick="sendChat()">Send</button>
-  </div>
-</div>
-<script>
-    const chatbot = document.getElementById("chatbot");
-const chatMessages = document.getElementById("chatMessages");
-const chatInput = document.getElementById("chatInput");
-
-function toggleChatbot() {
-  chatbot.style.display =
-    chatbot.style.display === "flex" ? "none" : "flex";
-}
-
-function sendChat() {
-  const msg = chatInput.value.trim();
-  if (!msg) return;
-
-  addChatMessage(msg, "user");
-  chatInput.value = "";
-
-  setTimeout(() => {
-    botReply(msg);
-  }, 600);
-}
-
-function addChatMessage(text, sender) {
-  const div = document.createElement("div");
-  div.className = sender === "user" ? "user-msg" : "bot-msg";
-  div.textContent = text;
-  chatMessages.appendChild(div);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-function botReply(input) {
-  input = input.toLowerCase();
-  let reply = "I'm still learning 🤖. Try asking about projects or contribution.";
-
-  if (input.includes("project")) {
-    reply = "OpenPlayground hosts frontend projects like games, tools, and UI components.";
-  } 
-  else if (input.includes("contribute")) {
-    reply = "You can contribute by submitting projects or improving existing ones via GitHub 🚀";
-  }
-  else if (input.includes("github")) {
-    reply = "Visit our GitHub repo to explore and contribute to OpenPlayground.";
-  }
-  else if (input.includes("idea")) {
-    reply = "Try building games, AI tools, productivity apps, or creative UI projects!";
-  }
-  else if (input.includes("hello") || input.includes("hi")) {
-    reply = "Hello 👋 Welcome to OpenPlayground!";
-  }
-
-  typeBot(reply);
-}
-
-function typeBot(text) {
-  const div = document.createElement("div");
-  div.className = "bot-msg";
-  chatMessages.appendChild(div);
-
-  let i = 0;
-  const typing = setInterval(() => {
-    div.textContent += text.charAt(i);
-    i++;
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-    if (i === text.length) clearInterval(typing);
-  }, 20);
-}
-
-chatInput.addEventListener("keypress", e => {
-  if (e.key === "Enter") sendChat();
-});
-
-</script>
-    <script src="./js/app.js"></script>
-        <!-- Chatbot: OpenPlayground Assistant -->
-        <button id="chatbot-toggle">💬</button>
-
-        <div class="chatbot-container" id="chatbot">
-            <div class="chatbot-header">
-                <span>OpenPlayground Assistant</span>
-                <button id="close-chat">✖</button>
-            </div>
-
-            <div class="chatbot-messages" id="chatbot-messages">
-                <div class="bot-message">
-                    👋 Hi! I’m the OpenPlayground Assistant.  
-                    <br />How can I help you?
-                </div>
-            </div>
-
-            <div class="chatbot-input">
-                <input type="text" id="user-input" placeholder="Type your message..." />
-                <button id="send-btn">➤</button>
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="bot-msg">
+                Hi 👋 I’m OpenPlayground AI. How can I help you?
             </div>
         </div>
 
-        <script src="./js/chatbot.js"></script>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Ask something..." />
+            <button onclick="sendChat()">Send</button>
+        </div>
+    </div>
+    <script>
+        const chatbot = document.getElementById("chatbot");
+        const chatMessages = document.getElementById("chatMessages");
+        const chatInput = document.getElementById("chatInput");
+
+        function toggleChatbot() {
+            chatbot.style.display =
+                chatbot.style.display === "flex" ? "none" : "flex";
+        }
+
+        function sendChat() {
+            const msg = chatInput.value.trim();
+            if (!msg) return;
+
+            addChatMessage(msg, "user");
+            chatInput.value = "";
+
+            setTimeout(() => {
+                botReply(msg);
+            }, 600);
+        }
+
+        function addChatMessage(text, sender) {
+            const div = document.createElement("div");
+            div.className = sender === "user" ? "user-msg" : "bot-msg";
+            div.textContent = text;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function botReply(input) {
+            input = input.toLowerCase();
+            let reply = "I'm still learning 🤖. Try asking about projects or contribution.";
+
+            if (input.includes("project")) {
+                reply = "OpenPlayground hosts frontend projects like games, tools, and UI components.";
+            }
+            else if (input.includes("contribute")) {
+                reply = "You can contribute by submitting projects or improving existing ones via GitHub 🚀";
+            }
+            else if (input.includes("github")) {
+                reply = "Visit our GitHub repo to explore and contribute to OpenPlayground.";
+            }
+            else if (input.includes("idea")) {
+                reply = "Try building games, AI tools, productivity apps, or creative UI projects!";
+            }
+            else if (input.includes("hello") || input.includes("hi")) {
+                reply = "Hello 👋 Welcome to OpenPlayground!";
+            }
+
+            typeBot(reply);
+        }
+
+        function typeBot(text) {
+            const div = document.createElement("div");
+            div.className = "bot-msg";
+            chatMessages.appendChild(div);
+
+            let i = 0;
+            const typing = setInterval(() => {
+                div.textContent += text.charAt(i);
+                i++;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                if (i === text.length) clearInterval(typing);
+            }, 20);
+        }
+
+        chatInput.addEventListener("keypress", e => {
+            if (e.key === "Enter") sendChat();
+        });
+
+    </script>
+    <script src="./js/app.js"></script>
+    <!-- Chatbot: OpenPlayground Assistant -->
+    <button id="chatbot-toggle">💬</button>
+
+    <div class="chatbot-container" id="chatbot">
+        <div class="chatbot-header">
+            <span>OpenPlayground Assistant</span>
+            <button id="close-chat">✖</button>
+        </div>
+
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="bot-message">
+                👋 Hi! I’m the OpenPlayground Assistant.
+                <br />How can I help you?
+            </div>
+        </div>
+
+        <div class="chatbot-input">
+            <input type="text" id="user-input" placeholder="Type your message..." />
+            <button id="send-btn">➤</button>
+        </div>
+    </div>
+
+    <script src="./js/chatbot.js"></script>
 </body>
 
 </html>
