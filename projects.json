@@ -1,5 +1,122 @@
 [
   {
+    "title": "Human Error Playground",
+    "category": "experimental",
+    "description": "An educational interface exploring common UI error patterns through intentionally ambiguous design choices.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "link": "./projects/HumanErrorPlayground/index.html",
+    "icon": "ri-flask-line",
+    "coverStyle": "background: linear-gradient(135deg, #faf5ff 0%, #f5f3ff 100%); color:#7c3aed;"
+  },
+  {
+    "title": "Attention Drift Visualizer",
+    "category": "productivity",
+    "description": "A visualization tool that shows attention patterns based on interaction gaps and tab switches for focus awareness.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "link": "./projects/AttentionDriftVisualizer/index.html",
+    "icon": "ri-focus-line",
+    "coverStyle": "background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%); color:#5b21b6;"
+  },
+  {
+    "title": "Reality Check Simulator",
+    "category": "productivity",
+    "description": "A time estimation awareness tool that compares predicted vs actual task durations to improve time management skills.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "link": "./projects/RealityCheckSimulator/index.html",
+    "icon": "ri-time-line",
+    "coverStyle": "background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); color:#0c4a6e;"
+  },
+  {
+    "title": "Pagination Component",
+    "category": "utility",
+    "description": "A reusable, responsive pagination component for handling large datasets with configurable options.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "link": "./projects/PaginationComponent/index.html",
+    "icon": "ri-file-list-3-line",
+    "coverStyle": "background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%); color:#1e40af;"
+  },
+  {
+    "title": "Drag and Drop List Manager",
+    "category": "utility",
+    "description": "A drag-and-drop list manager with reordering, priority levels, and local storage persistence.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "link": "./projects/DragAndDropList/index.html",
+    "icon": "ri-draggable",
+    "coverStyle": "background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); color:#ffffff;"
+  },
+  {
+    "title": "Focus Session Companion",
+    "category": "utility",
+    "description": "Enhance productivity with timed focus sessions and breaks.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "link": "./projects/FocusSessionCompanion/index.html",
+    "icon": "ri-booklet-line",
+    "coverStyle": "background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); color:#78350f;"
+  },
+  {
+    "title": "Personal Diary",
+    "category": "utility",
+    "description": "A personal diary app to write, view, search, and manage daily entries with local data persistence.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "link": "./projects/PersonalDiary/index.html",
+    "icon": "ri-booklet-line",
+    "coverStyle": "background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); color:#78350f;"
+  },
+  {
+    "title": "Notes Taking App",
+    "category": "utility",
+    "description": "A lightweight frontend notes app to create, edit, search, and store notes using LocalStorage.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "link": "./projects/NotesTaking/index.html",
+    "icon": "ri-sticky-note-line",
+    "coverStyle": "background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); color:#164e63;"
+  },
+  {
+    "title": "Stack vs Queue Visualizer",
+    "category": "utility",
+    "description": "Interactive visualizer to understand Stack (LIFO) and Queue (FIFO) operations with animations and explanations.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "link": "./projects/StackvsQueue_Visualizer/index.html",
+    "icon": "ri-stack-line",
+    "coverStyle": "background: linear-gradient(135deg, #3498db 0%, #9b59b6 100%); color: white;"
+  },
+  {
     "title": "AI Resume Analyzer",
     "category": "utility",
     "description": "Analyze and improve your resume with AI.",
@@ -22,6 +139,32 @@
       "JS"
     ],
     "link": "./projects/AI-ChatBot/index.html",
+    "icon": "ri-robot-line",
+    "coverStyle": "background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white;"
+  },
+  {
+    "title": "Procrastination Cost Calculator",
+    "category": "fun",
+    "description": "Helps users visualize the hidden cost of procrastination by converting daily wasted hours into monthly and yearly time and productivity loss. ",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "link": "./projects/procrastinationcost/index.html",
+    "icon": "ri-robot-line",
+    "coverStyle": "background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white;"
+  },
+  {
+    "title": "Mood Tracker",
+    "category": "Fun",
+    "description": " a simple daily emotion logging application that allows users to record their mood using emoji-based inputs. Each mood entry is saved with the current date and displayed in a history list. The application uses browser localStorage to persist data, making the mood history available even after refreshing the page.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "link": "./projects/moodtracker/index.html",
     "icon": "ri-robot-line",
     "coverStyle": "background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white;"
   },
@@ -60,7 +203,7 @@
       "CSS",
       "JS"
     ],
-    "link": "./projects/EduConnect/EduConnect/index.html",
+    "link": "./projects/EduConnect/index.html",
     "icon": "ri-graduation-cap-line",
     "coverStyle": "background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white;"
   },
@@ -161,6 +304,19 @@
     "link": "./projects/Password-Generator/frontend/index.html",
     "icon": "ri-lock-password-line",
     "coverStyle": "background: #059669; color: white;"
+  },
+  {
+    "title": "Chess Game",
+    "category": "game",
+    "description": "Play chess to test your strategy skills.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "link": "./projects/chess/index.html",
+    "icon": "ri-palette-line",
+    "coverStyle": "background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #831843;"
   },
   {
     "title": "Pattern Memory Game",
@@ -490,19 +646,6 @@
     "coverStyle": "background: #7c3aed; color: white;"
   },
   {
-    "title": "Focus Session",
-    "category": "utility",
-    "description": "Stay focused with timed work sessions.",
-    "tech": [
-      "HTML",
-      "CSS",
-      "JS"
-    ],
-    "link": "./projects/focussesh/index.html",
-    "icon": "ri-focus-3-line",
-    "coverStyle": "background: #be185d; color: white;"
-  },
-  {
     "title": "Guess the Number",
     "category": "game",
     "description": "Guess the secret number game.",
@@ -602,7 +745,7 @@
       "CSS",
       "JS"
     ],
-    "link": "./projects/memory-game/index.html",
+    "link": "./projects/simon-game/index.html",
     "icon": "ri-brain-line",
     "coverStyle": "background: #7c3aed; color: white;"
   },
@@ -751,6 +894,19 @@
     "coverStyle": "background: #16a34a; color: white;"
   },
   {
+    "title": "Expense Splitter",
+    "category": "utility",
+    "description": "Designed to split a total expense evenly among a group of people. ",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "link": "./projects/expensesplitter/index.html",
+    "icon": "ri-money-dollar-box-line",
+    "coverStyle": "background: #16a34a; color: white;"
+  },
+  {
     "title": "Snake and Ladder",
     "category": "game",
     "description": "Classic Snake and Ladder board game.",
@@ -845,7 +1001,11 @@
     "title": "Instagram Bio Generator",
     "category": "utility",
     "description": "Generate random Instagram bio suggestions with emojis and vibes.",
-    "tech": ["HTML", "CSS", "JS"],
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
     "link": "./projects/Insta_bio_suggesstion/index.html",
     "icon": "ri-user-line",
     "coverStyle": "background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); color: #7c2d12;"
@@ -854,16 +1014,427 @@
 ]
 =======
   },
- {
-  "title": "Hangman Game",
+  {
+    "title": "Hangman Game",
+    "category": "game",
+    "description": "Guess the hidden word one letter at a time before running out of attempts.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "link": "./projects/hangman-game/index.html",
+    "icon": "ri-keyboard-line",
+    "coverClass": "hangman-cover"
+  },
+  {
+    "title": "Particle Text",
+    "category": "game",
+    "description": "Convert your text into particle text!",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS",
+      "Canvas"
+    ],
+    "link": "./projects/particle-text convert/index.html",
+    "icon": "ri-cursor-line",
+    "coverClass": "particle-cover"
+  },
+  {
+    "title": "Drawing Canvas",
+    "category": "game",
+    "description": "A simple interactive canvas that lets users draw freely with adjustable brush size and color.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Canvas"
+    ],
+    "link": "./projects/simple-drawing-canvas/index.html",
+    "icon": "ri-brush-line",
+    "coverClass": "drawing-canvas-cover"
+  },
+  {
+    "title": "Visual Rhythm Game",
+    "category": "game",
+    "description": "Tap in sync with animated visual beats in a silent, arcade-style rhythm game.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "link": "./projects/Visual_Rhythm_Game/index.html",
+    "icon": "ri-pulse-line",
+    "coverStyle": "background: linear-gradient(135deg, #020617 0%, #4f46e5 100%); color:#e0e7ff;"
+  },
+  {
+    "title": "Visual Rhythm Game",
+    "category": "game",
+    "description": "Tap in sync with animated visual beats in a silent, arcade-style rhythm game.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "link": "./projects/Visual_Rhythm_Game/index.html",
+    "icon": "ri-pulse-line",
+    "coverStyle": "background: linear-gradient(135deg, #020617 0%, #4f46e5 100%); color:#e0e7ff;"
+  },
+  {
+    "title": "One Button Boss Fight",
+    "category": "game",
+    "description": "Defeat a boss using a single button with timing-based attacks and dodges.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "link": "./projects/One_Button_Boss_Fight/index.html",
+    "icon": "ri-sword-line",
+    "coverStyle": "background: linear-gradient(135deg, #7f1d1d 0%, #1f2937 100%); color:#fef2f2;"
+  },
+  {
+    "title": "Sudoku Solver",
+    "category": "utility",
+    "description": "Play Sudoku, generate infinite puzzles, or watch the AI solve them.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "link": "./projects/Sudoku_Solver/index.html",
+    "icon": "ri-grid-fill",
+    "coverStyle": "background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%); color: white;"
+  },
+  {
+    "title": "Sorting Visualizer",
+    "category": "utility",
+    "description": "Interactive visualizer for sorting algorithms (Bubble, Merge, Quick, etc.).",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Sorting_Visualizer/index.html",
+    "icon": "ri-bar-chart-grouped-line",
+    "coverStyle": "background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); color: white;"
+  },
+  {
+    "title": "Attention Span Self-Test",
+    "category": "utility",
+    "description": "Test how long you can stay focused on a subtle visual cue and measure attention accuracy.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Attention-Span-Self-Test/index.html",
+    "icon": "ri-focus-3-line",
+    "coverStyle": "background: linear-gradient(135deg, #020617 0%, #312e81 100%); color: white;"
+  },
+  {
+    "title": "Battery Detector",
+    "category": "utility",
+    "description": "Detect and display battery status and charging information.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/battery-detector/index.html",
+    "icon": "ri-battery-2-charge-line",
+    "coverStyle": "background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white;"
+  },
+  {
+    "title": "Daily Randomizer",
+    "category": "utility",
+    "description": "Get a daily random quote, task, challenge, or fun prompt.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Daily-Randomizer/index.html",
+    "icon": "ri-shuffle-line",
+    "coverStyle": "background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%); color: white;"
+  },
+  {
+    "title": "Dictionary",
+    "category": "utility",
+    "description": "Look up word definitions, synonyms, and meanings.",
+    "tech": ["HTML", "CSS", "JS", "API"],
+    "link": "./projects/dictionary/index.html",
+    "icon": "ri-book-2-line",
+    "coverStyle": "background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); color: white;"
+  },
+  {
+    "title": "Digital Minimalism Experiment",
+    "category": "utility",
+    "description": "Explore how dependent you are on digital stimulation through a minimal interface.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Digital-Minimalism-Experiment/index.html",
+    "icon": "ri-eye-off-line",
+    "coverStyle": "background: linear-gradient(135deg, #020617 0%, #1e293b 100%); color: white;"
+  },
+  {
+    "title": "Emotion-Based UI Switcher",
+    "category": "utility",
+    "description": "A UI that adapts colors, motion, typography based on the user's selected emotion.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Emotion-UI-Switcher/index.html",
+    "icon": "ri-emotion-happy-line",
+    "coverStyle": "background: linear-gradient(135deg, #facc15 0%, #ec4899 50%, #6366f1 100%); color: white;"
+  },
+  {
+    "title": "Event Countdown Timer",
+    "category": "utility",
+    "description": "A live countdown timer that tracks time remaining until an event.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Event-Countdown-Timer/index.html",
+    "icon": "ri-timer-line",
+    "coverStyle": "background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); color: white;"
+  },
+  {
+    "title": "File Uploader",
+    "category": "utility",
+    "description": "Upload files with progress tracking and preview support.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/file_uploader/index.html",
+    "icon": "ri-upload-cloud-2-line",
+    "coverStyle": "background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: white;"
+  },
+  {
+    "title": "AI Git Commit Generator",
+    "category": "utility",
+    "description": "AI-powered suggestions for git commit messages based on your changes.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/GitCommit/index.html",
+    "icon": "ri-git-commit-line",
+    "coverStyle": "background: linear-gradient(135deg, #afdfff 0%, #3b82f6 100%); color: #1e293b;"
+  },
+  {
+    "title": "Glassmorphism Generator",
+    "category": "utility",
+    "description": "Generate beautiful glassmorphism CSS effects with live preview.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/glassmorphism-generator/index.html",
+    "icon": "ri-blur-off-line",
+    "coverStyle": "background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(10px); color: #6366f1;"
+  },
+  {
+    "title": "Gradient Pattern Generator",
+    "category": "utility",
+    "description": "Create and customize gradient patterns for web design.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/GradientPattern/index.html",
+    "icon": "ri-palette-line",
+    "coverStyle": "background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;"
+  },
+  {
+    "title": "Guess Number Game",
+    "category": "game",
+    "description": "Guess the secret number within limited attempts.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/GuessNumber/index.html",
+    "icon": "ri-question-mark",
+    "coverStyle": "background: linear-gradient(135deg, #ea580c 0%, #f97316 100%); color: white;"
+  },
+  {
+    "title": "Holi Havoc Game",
+    "category": "game",
+    "description": "A colorful game where players catch falling colors to score points.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Holi-Havoc-Game/index.html",
+    "icon": "ri-gamepad-line",
+    "coverStyle": "background: linear-gradient(135deg, #f56085 0%, #ec4899 100%); color: white;"
+  },
+  {
+    "title": "If-Else Decision Simulator",
+    "category": "utility",
+    "description": "Visualize if-else decision making in programming.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/If-Else_Decision_Simulator/index.html",
+    "icon": "ri-git-branch-line",
+    "coverStyle": "background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%); color: white;"
+  },
+  {
+    "title": "Instagram Bio Generator",
+    "category": "utility",
+    "description": "Generate creative Instagram bio suggestions.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Instabiosuggestion/index.html",
+    "icon": "ri-instagram-line",
+    "coverStyle": "background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;"
+  },
+  {
+    "title": "KeyCode Detector",
+    "category": "utility",
+    "description": "Detect and display key codes for any key pressed.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/KeyCode/index.html",
+    "icon": "ri-keyboard-line",
+    "coverStyle": "background: #475569; color: #f8fafc;"
+  },
+  {
+    "title": "Memory Flip Game",
+    "category": "game",
+    "description": "Classic memory card matching game.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/memory-flip-game/index.html",
+    "icon": "ri-picture-in-picture-line",
+    "coverStyle": "background: #7c3aed; color: white;"
+  },
+  {
+    "title": "PDF Merger (MergeDoc)",
+    "category": "utility",
+    "description": "Merge multiple PDF files into one document directly in your browser.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/MergeDoc/index.html",
+    "icon": "ri-file-pdf-line",
+    "coverStyle": "background: linear-gradient(135deg, #7a1050 0%, #dc2626 100%); color: white;"
+  },
+  {
+    "title": "Minesweeper",
+    "category": "game",
+    "description": "Classic Minesweeper puzzle game.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/minesweeper/index.html",
+    "icon": "ri-bomb-line",
+    "coverStyle": "background: linear-gradient(135deg, #374151 0%, #1f2937 100%); color: white;"
+  },
+  {
+    "title": "Number Guessing Game",
+    "category": "game",
+    "description": "Guess the randomly generated number within attempts.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Number_Guessing_Game/index.html",
+    "icon": "ri-numbers-line",
+    "coverStyle": "background: linear-gradient(135deg, #ea580c 0%, #f97316 100%); color: white;"
+  },
+  {
+    "title": "Pixel Sandbox",
+    "category": "game",
+    "description": "Create pixel art in a sandbox environment.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/pixel-sandbox/index.html",
+    "icon": "ri-paint-brush-line",
+    "coverStyle": "background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%); color: white;"
+  },
+  {
+    "title": "Product Listing Page",
+    "category": "utility",
+    "description": "A responsive product listing page with filtering and sorting.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Product_Listing_Page/index.html",
+    "icon": "ri-shopping-bag-line",
+    "coverStyle": "background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%); color: white;"
+  },
+  {
+    "title": "Random Idea Generator",
+    "category": "utility",
+    "description": "Generate creative ideas instantly with smooth animations.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Random_Idea_Generator/index.html",
+    "icon": "ri-lightbulb-flash-line",
+    "coverStyle": "background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;"
+  },
+  {
+    "title": "Recipe Book",
+    "category": "utility",
+    "description": "A smart recipe book with favorites, timers, and PDF export.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Recipe/index.html",
+    "icon": "ri-restaurant-line",
+    "coverStyle": "background: linear-gradient(135deg, #f0bf57 0%, #f59e0b 100%); color: #78350f;"
+  },
+  {
+    "title": "Solar System",
+    "category": "utility",
+    "description": "Interactive visualization of our solar system.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/solar-system/index.html",
+    "icon": "ri-sun-line",
+    "coverStyle": "background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); color: #fbbf24;"
+  },
+  {
+    "title": "Study Planner",
+    "category": "utility",
+    "description": "Plan and organize your study schedule effectively.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/studyplanner/index.html",
+    "icon": "ri-book-open-line",
+    "coverStyle": "background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%); color: white;"
+  },
+  {
+    "title": "Theme Builder",
+    "category": "utility",
+    "description": "Create and customize themes for your web applications.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Theme_Builder/index.html",
+    "icon": "ri-brush-line",
+    "coverStyle": "background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%); color: white;"
+  },
+  {
+    "title": "Time Perception Experiment",
+    "category": "utility",
+    "description": "Test how accurately you can perceive one minute without a visible timer.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Time-Perception-Experiment/index.html",
+    "icon": "ri-time-line",
+    "coverStyle": "background: linear-gradient(135deg, #0f172a 0%, #334155 100%); color: white;"
+  },
+  {
+    "title": "Time Zone Converter",
+    "category": "utility",
+    "description": "Convert time between different time zones easily.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/time-zone-converter/index.html",
+    "icon": "ri-earth-line",
+    "coverStyle": "background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%); color: white;"
+  },
+  {
+    "title": "Type Quest",
+    "category": "game",
+    "description": "A typing adventure game to improve your typing speed.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/Type-Quest/index.html",
+    "icon": "ri-keyboard-box-line",
+    "coverStyle": "background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%); color: white;"
+  },
+  {
+    "title": "Unlimited Colors",
+    "category": "utility",
+    "description": "Change background color every second with a start/stop button.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/UnlimitedColors/index.html",
+    "icon": "ri-palette-line",
+    "coverStyle": "background: linear-gradient(135deg, #46e5d2 0%, #22d3ee 100%); color: #0f172a;"
+  },
+  {
+    "title": "Weather Sculpture",
+    "category": "utility",
+    "description": "Real-time weather visualization with dynamic elements.",
+    "tech": ["HTML", "CSS", "JS", "API"],
+    "link": "./projects/WeatherSculpture/index.html",
+    "icon": "ri-sun-cloudy-line",
+    "coverStyle": "background: linear-gradient(135deg, #ff8484 0%, #f87171 100%); color: white;"
+  },
+  {
+    "title": "Word Memory Game",
+    "category": "game",
+    "description": "Test your memory by remembering and matching words.",
+    "tech": ["HTML", "CSS", "JS"],
+    "link": "./projects/word-memory-game/index.html",
+    "icon": "ri-text",
+    "coverStyle": "background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%); color: white;"
+  }
+  ,
+  {
+  "title": "Drawing Canvas",
   "category": "game",
-  "description": "Guess the hidden word one letter at a time before running out of attempts.",
+  "description": "A simple interactive canvas that lets users draw freely with adjustable brush size and color.",
+  "tech": ["HTML", "CSS", "JavaScript", "Canvas"],
+  "link": "./projects/simple-drawing-canvas/index.html",
+  "icon": "ri-brush-line",
+  "coverClass": "drawing-canvas-cover"
+}
+{
+  "title": "Online Food Delivery App",
+  "category": "utility",
+  "description": "Responsive food ordering UI with cart functionality",
   "tech": ["HTML", "CSS", "JS"],
-  "link": "./projects/hangman-game/index.html",
-  "icon": "ri-keyboard-line",
-  "coverClass": "hangman-cover"
+  "link": "./projects/online-food-delivery/index.html",
+  "icon": "ri-restaurant-line",
+  "coverClass": "online-food-cover"
 }
 
 
 ]
 main
+
+]
