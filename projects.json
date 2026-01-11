@@ -2430,5 +2430,18 @@
     "link": "./projects/Sorting-Visualizer",
     "icon": "ri-bubble-chart-line",
     "coverStyle": "background: #475569; color: #f8fafc;"
-  }
-]
+  },
+
+{
+  "title": "Pendulum Simulation",
+  "category": "physics",
+  "description": "Interactive simulation of a simple pendulum using real-world physics equations and canvas-based animation.",
+  "tech": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "link": "./projects/pendulum-simulation/index.html",
+  "icon": "ri-compass-3-line",
+  "coverStyle": "background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white;"
+}
