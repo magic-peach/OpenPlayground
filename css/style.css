@@ -1315,6 +1315,50 @@ html[data-theme="dark"] .section-badge {
   transition: all var(--transition-base);
 }
 
+/* ===============================
+   Difficulty Badge
+   =============================== */
+
+.card-cover {
+  position: relative; /* required for badge positioning */
+}
+
+.difficulty-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  z-index: 6;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Difficulty Variants */
+.difficulty-badge.beginner {
+  background: #22c55e;
+  color: white;
+}
+
+.difficulty-badge.intermediate {
+  background: #facc15;
+  color: #000;
+}
+
+.difficulty-badge.advanced {
+  background: #ef4444;
+  color: white;
+}
+
+/* Dark mode safety */
+html[data-theme="dark"] .difficulty-badge {
+  filter: brightness(1.05);
+}
+
+
 .card:hover .card-cover {
   background: var(--gradient-primary);
   color: white;
