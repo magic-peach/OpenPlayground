@@ -1023,7 +1023,7 @@
       "CSS",
       "JS"
     ],
-    "link": "./projects/memory-game/index.html",
+    "link": "./projects/memory-flip-game/index.html",
     "icon": "ri-brain-line",
     "coverStyle": "background: #7c3aed; color: white;"
   },
@@ -1842,19 +1842,14 @@
     "coverStyle": "background: linear-gradient(135deg, #1e293b 0%, #334155 100%); color: #3b82f6;"
   },
   {
-    "title": "GitHub User Finder",
-    "category": "utility",
-    "description": "Search and explore GitHub user profiles with recent repositories in real time.",
-    "tech": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "GitHub API"
-    ],
-    "link": "./projects/github-user-finder/index.html",
-    "icon": "ri-github-fill",
-    "coverClass": "background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); color: #ffffff;"
-  },
+  "title": "GitHub User Finder",
+  "category": "utility",
+  "description": "Search and explore GitHub user profiles with recent repositories in real time.",
+  "tech": ["HTML", "CSS", "JavaScript", "GitHub API"],
+  "link": "./projects/gitHub-user-finder/index.html",
+  "icon": "ri-github-fill",
+  "coverClass": "background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); color: #ffffff;"
+  } ,
   {
     "title": "15 Sliding Puzzle",
     "category": "puzzle",
@@ -2623,6 +2618,19 @@
   "link": "./projects/github-repo-analyzer/index.html",
   "icon": "ri-github-line",
   "coverStyle": "background: linear-gradient(135deg, #2f2f2f 0%, #6b7280 100%); color: white;"
-}
+},
+  {
+    "title": "Code Editor ",
+    "category": "utility",
+    "description": "Write HTML/JS/CSS → See Live Preview | Save Snippets",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "link": "./projects/MiniCodeEditor/index.html",
+    "icon": "ri-terminal-box-line",
+    "coverStyle": "background: #1e1e1e; color: #4fc3f7;"
+  }
 
 ]
