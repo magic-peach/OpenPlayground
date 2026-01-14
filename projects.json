@@ -1,5 +1,18 @@
 [
   {
+    "title": "CSS Box Shadow Generator",
+    "category": "utility",
+    "description": "Interactive tool to visually create and customize CSS box shadows with multiple layers, real-time preview, and instant CSS code generation.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JS"
+    ],
+    "link": "./projects/css-box-shadow-generator/index.html",
+    "icon": "ri-shadow-line",
+    "coverClass": "shadow-generator-cover"
+  },
+  {
     "title": "Interactive Periodic Table",
     "category": "educational",
     "description": "Visually rich representation of chemical elements with color-coding, detailed information, and search functionality.",
