@@ -16,6 +16,20 @@
     "icon": "ri-brush-line",
     "coverStyle": "background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 50%, #c4b5fd 100%); color: white;"
   },
+  {
+  "title": "Random Mini Challenge Generator",
+  "category": "productivity",
+  "description": "Generate small, achievable challenges to encourage healthy breaks with friendly UI and progress tracking.",
+  "tech": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "LocalStorage"
+  ],
+  "link": "./projects/ChallengeGenerator/index.html",
+  "icon": "ri-gamepad-line",
+  "coverStyle": "background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #5a6782;"
+},
     {
     "title": "Sphere of Contributors",
     "category": "utility",
