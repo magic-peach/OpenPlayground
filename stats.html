@@ -561,7 +561,10 @@
           seenTitles.add(title.toLowerCase());
 
           // Count by category
-          const category = (project.category || 'other').toLowerCase();
+          const category = (project.category || 'other')
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, '_');
           categoryCount[category] = (categoryCount[category] || 0) + 1;
         });
 
