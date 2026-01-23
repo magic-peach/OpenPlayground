@@ -1,0 +1,13 @@
+{
+  "title": "Evorefresh",
+  "category": "fun",
+  "difficulty": "Intermediate",
+  "description": "EvoRefresh is an experimental web project that challenges the idea of static user interfaces by treating a website as a living, evolving system",
+  "tech": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+    "icon": "ri-magic-line",
+  "coverStyle": "background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;"
+}
