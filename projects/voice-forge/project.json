@@ -1,0 +1,13 @@
+{
+  "title": "Voice Forge",
+  "category": "utility",
+  "difficulty": "Intermediate",
+  "description": "A text-to-speech and speech-to-text utility that helps your to read text and generate text using speech",
+  "tech": [
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  "icon": "ri-speak",
+  "coverStyle": "background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;"
+}
