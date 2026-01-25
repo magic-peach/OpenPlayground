@@ -1797,6 +1797,11 @@
       "folder": "WorldMeetingPlanner",
       "path": "./projects/WorldMeetingPlanner/project.json",
       "link": "./projects/WorldMeetingPlanner/index.html"
+    },
+    {
+      "folder": "aesthetic-quote-generator",
+      "path": "./projects/aesthetic-quote-generator/project.json",
+      "link": "./projects/aesthetic-quote-generator/index.html"
     }
   ]
 }
