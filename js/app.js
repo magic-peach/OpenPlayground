@@ -4,19 +4,11 @@
 
 import { ProjectVisibilityEngine } from "./core/projectVisibilityEngine.js";
 import { keyevents } from "./core/Shortcut.js";
-import { analyticsEngine } from "./core/analyticsEngine.js";
-import { analyticsDashboard } from "./core/analyticsDashboard.js";
+import { codePlayground } from "./core/codePlayground.js";
 
-// Expose analytics dashboard globally
-window.openAnalyticsDashboard = function() {
-    analyticsDashboard.open();
-};
-
-// Expose project tracking globally for cardRenderer
-window.trackProjectView = function(projectData) {
-    if (analyticsEngine && projectData) {
-        analyticsEngine.trackProjectView(projectData);
-    }
+// Expose openCodePlayground globally for card buttons
+window.openCodePlayground = function(project) {
+    codePlayground.open(project);
 };
 
 class ProjectManager {
