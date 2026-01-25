@@ -6,6 +6,7 @@ import { ProjectVisibilityEngine } from "./core/projectVisibilityEngine.js";
 import { keyevents } from "./core/Shortcut.js";
 import { annotationEngine } from "./core/annotationEngine.js";
 import { insightRenderer } from "./core/insightRenderer.js";
+import { CommandPalette } from "./core/commandPalette.js";
 
 class ProjectManager {
     constructor() {
@@ -551,16 +552,27 @@ document.addEventListener('componentLoaded', (e) => {
     }
 });
 
+// Initialize Command Palette
+let commandPalette = null;
+function initCommandPalette() {
+    const manager = window.projectManagerInstance;
+    if (manager && !commandPalette) {
+        commandPalette = new CommandPalette(manager);
+        keyevents(commandPalette); // Pass command palette instance to keyboard handler
+        console.log("✨ Command Palette initialized");
+    }
+}
+
 // Also check immediately in case components already loaded (module timing issue)
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-        keyevents();
+        initCommandPalette();
         setTimeout(initProjectManager, 100); // Small delay to ensure components are ready
         setTimeout(checkInsightDeepLink, 600); // Check for insight deep links
     });
 } else {
     // DOM already loaded
-    keyevents();
+    initCommandPalette();
     setTimeout(initProjectManager, 100);
     setTimeout(checkInsightDeepLink, 600);
 }
