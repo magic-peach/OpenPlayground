@@ -1,9 +1,4 @@
-/**
- * NEUROFORGE APPLICATION CONTROLLER
- * Coordinates the math engine, neural framework, and UI visualizer.
- * * @author saiusesgithub
- * @version 1.0.0
- */
+
 
 class AppController {
     constructor() {

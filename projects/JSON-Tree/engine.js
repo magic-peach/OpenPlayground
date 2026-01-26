@@ -1,9 +1,3 @@
-/**
- * NEUROFORGE CORE ENGINE
- * Implements high-level abstractions for Deep Learning: Layers, Models, and Optimizers.
- * * @author saiusesgithub
- * @version 1.0.0
- */
 
 (function(root) {
     'use strict';

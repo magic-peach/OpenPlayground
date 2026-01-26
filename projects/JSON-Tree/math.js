@@ -1,10 +1,4 @@
-/**
- * NEUROFORGE MATHEMATICAL KERNEL
- * A high-performance linear algebra and automatic differentiation library.
- * This engine implements the "Scalar-to-Tensor" autograd system.
- * * @author saiusesgithub
- * @version 1.0.0
- */
+
 
 (function(root) {
     'use strict';

@@ -1,9 +1,3 @@
-/**
- * NEUROFORGE UI & VISUALIZATION ENGINE
- * Manages high-performance canvas rendering and real-time graph generation.
- * * @author saiusesgithub
- * @version 1.0.0
- */
 
 (function(root) {
     'use strict';
