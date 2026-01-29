@@ -2586,6 +2586,23 @@
     "link": "./projects/circle-packing/index.html",
     "icon": "ri-bubble-chart-line",
     "coverStyle": "background: linear-gradient(135deg, #1d2671 0%, #c33764 100%); color: #f8fafc;"
+  },
+
+
+  {
+    "title": "Recursive Tree",
+    "category": "experimental",
+    "difficulty": "Beginner",
+    "description": "A generative art sketch that uses recursion to draw branching tree structures, illustrating how simple self-repeating rules can produce complex, natural-looking forms.",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "link": "./projects/recursive-tree/index.html",
+    "icon": "ri-tree-line",
+    "coverStyle": "background: linear-gradient(135deg, #134e5e 0%, #71b280 100%); color: #f8fafc;"
   }
+  
   
 ]
