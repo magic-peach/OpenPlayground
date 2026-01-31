@@ -1,0 +1,53 @@
+name: Auto-assign issue with limit
+
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  auto-assign:
+    runs-on: ubuntu-latest
+
+    permissions:
+      issues: write
+      contents: read
+
+    steps:
+      - name: Check assignment limit and assign issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const username = context.payload.issue.user.login;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const issue_number = context.issue.number;
+
+            const { data } = await github.rest.search.issuesAndPullRequests({
+              q: `repo:${owner}/${repo} type:issue state:open assignee:${username}`
+            });
+
+            const openAssignedCount = data.total_count;
+
+            if (openAssignedCount >= 4) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number,
+                body: `⚠️ Hi @${username}, you already have **${openAssignedCount} active issues assigned**.\n\nYou can only have **4 open issues at a time**. Please complete or close existing ones before taking a new issue.`
+              });
+            } else {
+              await github.rest.issues.addAssignees({
+                owner,
+                repo,
+                issue_number,
+                assignees: [username]
+              });
+
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number,
+                body: `✅ Assigned to @${username}. You now have **${openAssignedCount + 1}/4 active issues.** 🚀`
+              });
+            }
